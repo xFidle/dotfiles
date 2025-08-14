@@ -9,6 +9,10 @@ autoload -U compinit && compinit
 
 source "$ZSH/oh-my-zsh.sh"
 
+# Neovim setup
+export EDITOR='nvim'
+export VISUAL='nvim'
+
 # Vi mode
 bindkey -v
 export KEYTIMEOUT=1
