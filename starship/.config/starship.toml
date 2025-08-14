@@ -14,8 +14,7 @@ $cmd_duration\
 $line_break
 $character"""
 
-# Prompt design
-add_newline = true
+add_newline=false
 
 [directory]
 truncation_length = 6
@@ -33,8 +32,6 @@ vimcmd_visual_symbol = '[V](bold green)'
 
 [fill]
 symbol = ' '
-
-# Predefined symbols
 
 [aws]
 symbol = "  "

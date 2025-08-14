@@ -65,5 +65,18 @@ bindkey -v '^?' backward-delete-char
 alias vim="nvim"
 alias c="clear"
 
-# Starship
+# Newlines between prompts
+PROMPT_NEEDS_NEWLINE=false
+precmd() {
+  if [[ "$PROMPT_NEEDS_NEWLINE" == true ]]; then
+    echo
+  fi
+  PROMPT_NEEDS_NEWLINE=true
+}
+clear() {
+  PROMPT_NEEDS_NEWLINE=false
+  command clear
+}
+
+# Starship init
 eval "$(starship init zsh)"
