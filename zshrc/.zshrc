@@ -1,8 +1,6 @@
 export ZSH="$HOME/.oh-my-zsh"
 export PATH=$PATH:/usr/local/go/bin
 
-ZSH_THEME="robbyrussell"
-
 plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 autoload -U compinit && compinit
@@ -69,6 +67,7 @@ bindkey -v '^?' backward-delete-char
 alias vim="nvim"
 alias c="clear"
 alias bat="batcat"
+alias cat="batcat --paging=never --style=numbers,changes"
 
 # Newlines between prompts
 PROMPT_NEEDS_NEWLINE=false
