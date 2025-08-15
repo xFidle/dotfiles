@@ -68,6 +68,7 @@ bindkey -v '^?' backward-delete-char
 # Aliases
 alias vim="nvim"
 alias c="clear"
+alias bat="batcat"
 
 # Newlines between prompts
 PROMPT_NEEDS_NEWLINE=false
