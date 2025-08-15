@@ -68,6 +68,7 @@ alias vim="nvim"
 alias c="clear"
 alias bat="batcat"
 alias cat="batcat --paging=never --style=numbers,changes"
+alias ls="lsd --group-directories-first -h -A"
 
 # Newlines between prompts
 PROMPT_NEEDS_NEWLINE=false
