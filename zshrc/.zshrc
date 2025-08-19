@@ -57,6 +57,7 @@ preexec() { echo -ne '\e[1 q' ;}
 
 # Keybindings
 bindkey '^f' autosuggest-accept
+bindkey -M vicmd ":" undefined-key
 bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
