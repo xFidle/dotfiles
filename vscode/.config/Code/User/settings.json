@@ -52,4 +52,5 @@
   },
   "editor.fontFamily": "JetBrainsMono Nerd Font",
   "editor.autoClosingBrackets": "always",
+  "editor.fontSize": 16,
 }
