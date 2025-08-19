@@ -65,8 +65,8 @@ bindkey -v '^?' backward-delete-char
 
 # Aliases
 alias vim="nvim"
-alias bat="batcat"
-alias cat="batcat --paging=never --style=numbers,changes"
+alias bat="bat" # batcat for debian distros
+alias cat="bat --paging=never --style=numbers,changes"
 alias ls="lsd --group-directories-first"
 alias q="exit"
 
