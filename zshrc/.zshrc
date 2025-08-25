@@ -1,5 +1,5 @@
 export ZSH="$HOME/.oh-my-zsh"
-export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
 
 plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
@@ -66,8 +66,17 @@ bindkey -v '^?' backward-delete-char
 
 # Aliases
 alias vim="nvim"
-alias bat="bat" # batcat for debian distros
-alias cat="bat --paging=never --style=numbers,changes"
+if command -v batcat >/dev/null 2>&1; then
+    _batcmd="batcat"
+elif command -v bat >/dev/null 2>&1; then
+    _batcmd="bat"
+else
+    _batcmd="cat"  # fallback if neither is installed
+fi
+alias bat="$_batcmd"
+alias cat="$_batcmd --paging=never --style=numbers,changes"
+alias bat="$_batcmd"
+alias cat="$_batcmd --paging=never --style=numbers,changes"
 alias ls="lsd --group-directories-first"
 alias q="exit"
 
@@ -84,5 +93,11 @@ clear() {
   command clear
 }
 
+# NVM
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  
+
 # Starship init
 eval "$(starship init zsh)"
+
