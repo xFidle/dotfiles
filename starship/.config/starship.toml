@@ -7,6 +7,7 @@ $git_commit\
 $pacakge\
 $fill\
 $golang\
+$nodejs\
 $python\
 $cmake\
 $jobs\
@@ -91,7 +92,7 @@ tag_disabled = false
 
 [golang]
 symbol = " "
-format = 	'[$symbol($version )]($style)'
+format = '[$symbol($version )]($style)'
 
 [guix_shell]
 symbol = " "
@@ -137,6 +138,7 @@ symbol = " "
 
 [nodejs]
 symbol = " "
+format = '[$symbol($version )]($style)'
 
 [ocaml]
 symbol = " "

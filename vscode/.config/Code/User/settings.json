@@ -1,5 +1,5 @@
 {
-    "editor.formatOnSave": false,
+    "editor.formatOnSave": true,
     "material-icon-theme.folders.theme": "classic",
     "editor.lineHeight": 2,
     "github.copilot.enable": { "*": false }, 
@@ -53,4 +53,10 @@
   "editor.fontFamily": "JetBrainsMono Nerd Font",
   "editor.autoClosingBrackets": "always",
   "editor.fontSize": 16,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
 }
