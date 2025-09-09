@@ -78,6 +78,7 @@ alias cat="$_batcmd --paging=never --style=numbers,changes"
 alias bat="$_batcmd"
 alias cat="$_batcmd --paging=never --style=numbers,changes"
 alias ls="lsd --group-directories-first"
+alias npm="pnpm"
 alias q="exit"
 
 # Newlines between prompts
