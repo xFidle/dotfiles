@@ -1,11 +1,24 @@
 export ZSH="$HOME/.oh-my-zsh"
 export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
 
-plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
+plugins=(git zsh-syntax-highlighting zsh-autosuggestions colored-man-pages)
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 autoload -U compinit && compinit
 
 source "$ZSH/oh-my-zsh.sh"
+source <(fzf --zsh)
+
+# NVM
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  
+
+# pnpm
+export PNPM_HOME="/home/michau/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
 
 # Neovim setup
 export EDITOR='nvim'
@@ -55,15 +68,6 @@ zle -N zle-line-init
 echo -ne '\e[1 q' 
 preexec() { echo -ne '\e[1 q' ;} 
 
-# Keybindings
-bindkey '^f' autosuggest-accept
-bindkey -M vicmd ":" undefined-key
-bindkey -M menuselect 'h' vi-backward-char
-bindkey -M menuselect 'k' vi-up-line-or-history
-bindkey -M menuselect 'l' vi-forward-char
-bindkey -M menuselect 'j' vi-down-line-or-history
-bindkey -v '^?' backward-delete-char
-
 # Aliases
 alias vim="nvim"
 if command -v batcat >/dev/null 2>&1; then
@@ -73,8 +77,6 @@ elif command -v bat >/dev/null 2>&1; then
 else
     _batcmd="cat"  # fallback if neither is installed
 fi
-alias bat="$_batcmd"
-alias cat="$_batcmd --paging=never --style=numbers,changes"
 alias bat="$_batcmd"
 alias cat="$_batcmd --paging=never --style=numbers,changes"
 alias ls="lsd --group-directories-first"
@@ -94,17 +96,31 @@ clear() {
   command clear
 }
 
-# NVM
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  
+# History
+HISTSIZE=5000
+HISTFILE=~/.zsh_history
+SAVEHIST=$HISTSIZE
+HISTDUP=erase
+setopt appendhistory
+setopt sharehistory
+setopt hist_ignore_space
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
 
-# pnpm
-export PNPM_HOME="/home/michau/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
+
+# Keybindings
+bindkey '^f' autosuggest-accept
+bindkey '^p' history-search-backward
+bindkey '^n' history-search-forward
+bindkey -M vicmd ":" undefined-key
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'l' vi-forward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
+bindkey -v '^?' backward-delete-char
+
 
 # Starship init
 eval "$(starship init zsh)"
