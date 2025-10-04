@@ -70,7 +70,6 @@ echo -ne '\e[1 q'
 preexec() { echo -ne '\e[1 q' ;} 
 
 # Aliases
-alias vim="nvim"
 if command -v batcat >/dev/null 2>&1; then
     _batcmd="batcat"
 elif command -v bat >/dev/null 2>&1; then
@@ -79,11 +78,12 @@ else
     _batcmd="cat"  # fallback if neither is installed
 fi
 alias bat="$_batcmd"
-alias cat="$_batcmd --paging=never --style=numbers,changes"
+alias cat="$_batcmd --paging=never"
 alias ls="lsd --group-directories-first"
-alias fzf=fzf --preview="bat --color=always {}"
+alias up="cd .."
 alias npm="pnpm"
-alias q="exit"
+alias vimf='nvim $(fzf -m --preview="bat --color=always {}")'
+alias vim="nvim"
 
 # Newlines between prompts
 PROMPT_NEEDS_NEWLINE=false
