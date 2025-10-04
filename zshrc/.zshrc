@@ -6,7 +6,6 @@ fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 autoload -U compinit && compinit
 
 source "$ZSH/oh-my-zsh.sh"
-source <(fzf --zsh)
 
 # NVM
 export NVM_DIR="$HOME/.nvm"
@@ -80,6 +79,7 @@ fi
 alias bat="$_batcmd"
 alias cat="$_batcmd --paging=never --style=numbers,changes"
 alias ls="lsd --group-directories-first"
+alias fzf=fzf --preview="bat --color=always {}"
 alias npm="pnpm"
 alias q="exit"
 
@@ -114,13 +114,11 @@ setopt hist_find_no_dups
 bindkey '^f' autosuggest-accept
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
-bindkey -M vicmd ":" undefined-key
-bindkey -M menuselect 'h' vi-backward-char
-bindkey -M menuselect 'k' vi-up-line-or-history
-bindkey -M menuselect 'l' vi-forward-char
-bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -v '^?' backward-delete-char
 
+
+# fzf
+source <(fzf --zsh)
 
 # Starship init
 eval "$(starship init zsh)"
