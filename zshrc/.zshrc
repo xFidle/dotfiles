@@ -43,8 +43,9 @@ function zle-keymap-select {
 # ci", ci', ci`, di", etc
 autoload -U select-quoted
 zle -N select-quoted
+quotes=('\', '"', '\`')
 for m in visual viopp; do
-  for c in {a,i}{\',\",\`}; do
+  for c in {a,i}$quotes; do
     bindkey -M $m $c select-quoted
   done
 done
@@ -52,8 +53,9 @@ done
 # ci{, ci(, ci<, di{, etc
 autoload -U select-bracketed
 zle -N select-bracketed
+brackets=('(', ')', '[', ']', '{', '}', '<', '>', 'b', 'B')
 for m in visual viopp; do
-  for c in {a,i}${(s..)^:-'()[]{}<>bB'}; do
+  for c in {a,i}$brackets; do
     bindkey -M $m $c select-bracketed
   done
 done
