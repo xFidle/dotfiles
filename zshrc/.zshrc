@@ -118,8 +118,8 @@ bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 bindkey -v '^?' backward-delete-char
 
-
 # fzf
+export FZF_DEFAULT_OPTS_FILE=~/.fzfrc
 source <(fzf --zsh)
 
 # Starship init
