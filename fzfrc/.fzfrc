@@ -1,3 +1,4 @@
+--preview="bat --color=always {}"
 --highlight-line
 --info=inline-right
 --ansi
