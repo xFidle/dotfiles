@@ -40,23 +40,27 @@ function zle-keymap-select {
   fi
 }
 
-# ci", ci', ci`, di", etc
+# ci', ci", ci`
 autoload -U select-quoted
 zle -N select-quoted
-quotes=('\', '"', '\`')
+quotes=(\' \" \`)
 for m in visual viopp; do
-  for c in {a,i}$quotes; do
-    bindkey -M $m $c select-quoted
+  for c in a i; do 
+    for q in ${quotes[@]}; do
+      bindkey -M $m "$c$q" select-quoted
+    done
   done
 done
 
-# ci{, ci(, ci<, di{, etc
+# ci{, ci(, ci<, di{
 autoload -U select-bracketed
 zle -N select-bracketed
-brackets=('(', ')', '[', ']', '{', '}', '<', '>', 'b', 'B')
+brackets=(\( \) \{ \} \[ \] \< \>)
 for m in visual viopp; do
-  for c in {a,i}$brackets; do
-    bindkey -M $m $c select-bracketed
+  for c in a i; do 
+    for b in ${brackets[@]}; do
+       bindkey -M $m "$c$b" select-bracketed
+    done
   done
 done
 
@@ -116,6 +120,10 @@ setopt hist_find_no_dups
 bindkey '^f' autosuggest-accept
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'l' vi-forward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -v '^?' backward-delete-char
 
 # fzf
