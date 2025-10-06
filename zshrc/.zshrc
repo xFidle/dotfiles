@@ -79,11 +79,11 @@ else
 fi
 alias bat="$_batcmd"
 alias cat="$_batcmd --paging=never"
-alias ls="lsd --group-directories-first"
+alias ls="lsd"
 alias up="cd .."
 alias npm="pnpm"
-alias vimf='nvim $(fzf -m --preview="bat --color=always {}")'
 alias vim="nvim"
+alias vimf='nvim $(fzf -m)'
 
 # Newlines between prompts
 PROMPT_NEEDS_NEWLINE=false
