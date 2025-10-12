@@ -10,9 +10,9 @@ vim.o.scrolloff = 10
 vim.o.confirm = true
 
 -- Visual options
+vim.o.signcolumn = 'yes'
 vim.o.showmode = false
 vim.o.cursorline = true 
-vim.o.signcolumn = 'yes'
 vim.o.termguicolors = true
 
 -- Incremental search
@@ -30,6 +30,9 @@ vim.o.breakindent = true -- wrapped line repeats indent
 vim.o.shiftwidth = 4
 vim.o.tabstop = 4
 vim.o.softtabstop = 4
+
+-- Disable auto line wrapping
+vim.o.wrap = false
 
 -- Case-insensitive searching (entering single capital char enables case-sensitive searching)
 vim.o.ignorecase = true

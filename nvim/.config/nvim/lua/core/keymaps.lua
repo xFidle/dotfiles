@@ -1,25 +1,26 @@
 vim.g.mapleader = " "
 
---Clear highlighting after pressing <Esc>
+-- Clear highlighting after pressing <Esc>
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
-vim.keymap.set('n', '<leader>pv', '<cmd>Ex<CR>')
+-- Char removal
+vim.keymap.set('n', 'x', '"_x')
+
+-- Multiline movement
+vim.keymap.set('v', 'K', [[:m '<-2<CR>gv=gv]])
+vim.keymap.set('v', 'J', [[:m '>+1<CR>gv=gv]])
 
 -- File operations
-vim.keymap.set('n', '<leader>w', '<cmd>w<CR>')
-vim.keymap.set('n', '<leader>q', '<cmd>q<CR>')
+vim.keymap.set('n', '<leader>w', ':w<CR>')
+vim.keymap.set('n', '<leader>q', ':q<CR>')
 
 -- Window managment
-vim.keymap.set('n', '<leader>sv', '<C-w>v')
-vim.keymap.set('n', '<leader>sh', '<C-w>s')
-vim.keymap.set('n', '<leader>h', '<C-w><C-h>')
-vim.keymap.set('n', '<leader>j', '<C-w><C-j>')
-vim.keymap.set('n', '<leader>k', '<C-w><C-k>')
-vim.keymap.set('n', '<leader>l', '<C-w><C-l>')
+vim.keymap.set('n', '<leader>sv', '<C-w>v<CR>')
+vim.keymap.set('n', '<leader>sh', '<C-w>s<CR>')
 vim.keymap.set('n', '<C-h>', '<C-w><C-h>')
-vim.keymap.set('n', '<C-l>', '<C-w><C-l>')
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>')
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>')
+vim.keymap.set('n', '<C-l>', '<C-w><C-l>')
 
 -- Cenetering screen after changing cursor's position
 vim.keymap.set('n', '<C-d>', '<C-d>zz')
