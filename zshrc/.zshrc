@@ -1,11 +1,14 @@
 export ZSH="$HOME/.oh-my-zsh"
-export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
 
+# plugins
 plugins=(git zsh-syntax-highlighting zsh-autosuggestions colored-man-pages)
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 autoload -U compinit && compinit
 
 source "$ZSH/oh-my-zsh.sh"
+
+# go
+export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
 
 # NVM
 export NVM_DIR="$HOME/.nvm"
@@ -73,14 +76,6 @@ zle -N zle-line-init
 echo -ne '\e[1 q' 
 preexec() { echo -ne '\e[1 q' ;} 
 
-# Aliases
-alias cat="bat --paging=never"
-alias ls="lsd"
-alias up="cd .."
-alias npm="pnpm"
-alias vim="nvim"
-alias vimf='nvim $(fzf -m)'
-
 # Newlines between prompts
 PROMPT_NEEDS_NEWLINE=false
 precmd() {
@@ -93,6 +88,13 @@ clear() {
   PROMPT_NEEDS_NEWLINE=false
   command clear
 }
+
+# Aliases
+alias cat="bat --paging=never"
+alias ls="lsd"
+alias npm="pnpm"
+alias vim="nvim"
+
 
 # History
 HISTSIZE=5000
@@ -116,10 +118,10 @@ bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
-bindkey -v '^?' backward-delete-char
 
 # fzf
 export FZF_DEFAULT_OPTS_FILE=~/.fzfrc
+export FZF_COMPLETION_DIR_OPTS='--walker dir,follow,hidden'
 source <(fzf --zsh)
 
 # Starship init

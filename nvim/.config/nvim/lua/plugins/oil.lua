@@ -15,7 +15,6 @@ return {
         },
     },
     keys = {
-        { '<leader>pv', '<cmd>Oil<CR>', mode = 'n' },
         { '-', '<cmd>Oil<CR>', mode = 'n' },
         { '_', '<cmd>Oil<CR>_', mode = 'n' },
     },

@@ -6,21 +6,30 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 -- Char removal
 vim.keymap.set('n', 'x', '"_x')
 
--- Multiline movement
-vim.keymap.set('v', 'K', [[:m '<-2<CR>gv=gv]])
+-- Multiline movement in visual mode
 vim.keymap.set('v', 'J', [[:m '>+1<CR>gv=gv]])
+vim.keymap.set('v', 'K', [[:m '<-2<CR>gv=gv]])
+
+-- Indention in visual mode
+vim.keymap.set('v', '>', '>gv')
+vim.keymap.set('v', '<', '<gv')
 
 -- File operations
 vim.keymap.set('n', '<leader>w', ':w<CR>')
 vim.keymap.set('n', '<leader>q', ':q<CR>')
 
--- Window managment
-vim.keymap.set('n', '<leader>sv', '<C-w>v<CR>')
-vim.keymap.set('n', '<leader>sh', '<C-w>s<CR>')
+-- Window navigation
+vim.keymap.set('n', '<leader>sv', '<C-w>v')
+vim.keymap.set('n', '<leader>sh', '<C-w>s')
 vim.keymap.set('n', '<C-h>', '<C-w><C-h>')
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>')
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>')
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>')
+
+-- Buffer navigation
+vim.keymap.set('n', '<leader>bq', '<cmd>bdelete<CR>')
+vim.keymap.set('n', 'H', '<cmd>bprevious<CR>')
+vim.keymap.set('n', 'L', '<cmd>bnext<CR>')
 
 -- Cenetering screen after changing cursor's position
 vim.keymap.set('n', '<C-d>', '<C-d>zz')
@@ -29,8 +38,12 @@ vim.keymap.set('n', 'n', 'nzz')
 vim.keymap.set('n', 'N', 'Nzz')
 
 -- Registers operations
+vim.keymap.set('n', '<leader>p', [["+p]])
 vim.keymap.set('v', '<leader>p', [["_dp]])
 vim.keymap.set('n', '<leader>y', [["+y]])
 vim.keymap.set('v', '<leader>y', [["+y]])
 vim.keymap.set('n', '<leader>d', [["_d]])
 vim.keymap.set('v', '<leader>d', [["_d]])
+
+-- Inner word substitutionsubstitution
+vim.keymap.set("n", "<leader>sw", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
