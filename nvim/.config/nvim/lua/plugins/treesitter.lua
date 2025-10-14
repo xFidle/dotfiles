@@ -1,12 +1,12 @@
 return {
     "nvim-treesitter/nvim-treesitter",
     build = ':TSUpdate',
-    branch = 'main',
-    lazy = false,
+    branch = 'master',
+    main = 'nvim-treesitter.configs',
     opts = {
         ensure_installed = { "c", "go", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline" },
         sync_install = false,
-        auto_install = true,
+        indent = { enable = true },
         highlight = {
             enable = true,
             disable = function(lang, buf)
@@ -15,7 +15,7 @@ return {
                 if ok and stats and stats.size > max_filesize then
                     return true
                 end
-            end,
-        },
-    }
+            end
+        }
+    },
 }
