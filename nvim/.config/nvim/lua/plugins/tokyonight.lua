@@ -3,11 +3,11 @@ return {
     lazy = false,
     priority = 1000,
     opts = {
-        style = "moon",
+        style = "night",
         transparent = true,
         styles = {
             comments = { italic = true },
-            keywords = { italic = false, bold = true },
+            keywords = { italic = false, bold = false },
         },
     },
     config = function(_, opts)

@@ -44,7 +44,3 @@ vim.o.smartcase = true
 vim.o.splitright = true
 vim.o.splitbelow = true
 
--- Whitespace chars
-vim.o.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' } 
-
