@@ -1,10 +1,19 @@
 vim.g.mapleader = " "
 
 -- Clear highlighting after pressing <Esc>
-vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+vim.keymap.set('n', '<Esc>', ':nohlsearch<CR>')
+
+-- Open lazy
+vim.keymap.set('n', '<leader>L', ':Lazy<CR>')
 
 -- Char removal
 vim.keymap.set('n', 'x', '"_x')
+
+-- Semicolon
+vim.keymap.set('n', '<leader>;', 'maA;<Esc>`a');
+
+-- Moving line using J
+vim.keymap.set('n', 'J', 'maJ`a')
 
 -- Multiline movement in visual mode
 vim.keymap.set('v', 'J', [[:m '>+1<CR>gv=gv]])
@@ -27,9 +36,9 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>')
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>')
 
 -- Buffer navigation
-vim.keymap.set('n', '<leader>bq', '<cmd>bdelete<CR>')
-vim.keymap.set('n', 'H', '<cmd>bprevious<CR>')
-vim.keymap.set('n', 'L', '<cmd>bnext<CR>')
+vim.keymap.set('n', '<leader>bq', ':bdelete<CR>')
+vim.keymap.set('n', '<leader>bn', ':bnext<CR>')
+vim.keymap.set('n', '<leader>bp', ':bprevious<CR>')
 
 -- Cenetering screen after changing cursor's position
 vim.keymap.set('n', '<C-d>', '<C-d>zz')
@@ -37,7 +46,7 @@ vim.keymap.set('n', '<C-u>', '<C-u>zz')
 vim.keymap.set('n', 'n', 'nzz')
 vim.keymap.set('n', 'N', 'Nzz')
 
--- Registers operations
+-- Registers' operations
 vim.keymap.set('n', '<leader>p', [["+p]])
 vim.keymap.set('v', '<leader>p', [["_dp]])
 vim.keymap.set('n', '<leader>y', [["+y]])
@@ -45,5 +54,5 @@ vim.keymap.set('v', '<leader>y', [["+y]])
 vim.keymap.set('n', '<leader>d', [["_d]])
 vim.keymap.set('v', '<leader>d', [["_d]])
 
--- Inner word substitutionsubstitution
+-- Inner word substitution
 vim.keymap.set("n", "<leader>sw", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])

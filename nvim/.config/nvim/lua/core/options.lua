@@ -11,10 +11,11 @@ vim.o.confirm = true
 
 -- Visual options
 vim.o.signcolumn = 'yes'
-vim.o.showmode = false
-vim.o.laststatus = 0
 vim.o.cursorline = true 
 vim.o.termguicolors = true
+
+-- Disable default status line
+vim.o.showmode = false
 
 -- Incremental search
 vim.o.incsearch = true

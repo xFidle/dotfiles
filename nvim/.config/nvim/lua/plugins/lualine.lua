@@ -1,10 +1,3 @@
-local function filename()
-end
-
-local function cwd()
-    return 
-end
-
 return {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
@@ -29,10 +22,19 @@ return {
                     local hl_group = 'LualineFileIconColor' .. extension
                     vim.api.nvim_set_hl(0, hl_group, { fg = color })
                     return '%#' .. hl_group .. '#' .. icon .. '%* ' .. filename
-                end
+                end,
+                'diagnostics'
             },
             -- TODO: Configure lsp to see diagnostics
-            lualine_x = { 'searchcount', 'selectioncount' },
+            lualine_x = { 
+                {
+                    function ()
+                        local directory = vim.fn.fnamemodify(vim.fn.getcwd(), ':t')
+                        return directory
+                    end,
+                    icon = {  ' ', align = 'right' }
+                },
+            },
             lualine_y = { { 'datetime', style='%H:%M:%S' } },
             lualine_z = { 'progress', 'location' },
         },
