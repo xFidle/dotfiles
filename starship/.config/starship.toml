@@ -6,12 +6,12 @@ $git_state\
 $git_commit\
 $pacakge\
 $fill\
+$cmd_duration\
 $golang\
 $nodejs\
 $python\
 $cmake\
 $jobs\
-$cmd_duration\
 $line_break
 $character"""
 

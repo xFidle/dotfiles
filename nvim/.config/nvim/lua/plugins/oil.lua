@@ -15,8 +15,8 @@ return {
         },
     },
     keys = {
-        { '-', '<cmd>Oil<CR>', mode = 'n' },
-        { '_', '<cmd>Oil<CR>_', mode = 'n' },
+        { '-', ':Oil<CR>', mode = 'n' },
+        { '_', function() require('oil').open(vim.fn.getcwd()) end, mode = 'n' },
     },
     dependencies = { { "nvim-mini/mini.icons", opts = {} } },
     lazy = false,

@@ -7,6 +7,15 @@ return {
         ensure_installed = { "c", "go", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline" },
         sync_install = false,
         indent = { enable = true },
+        incremental_selection = {
+            enable = true,
+            keymaps = {
+                init_selection = '<Enter>', 
+                node_incremental = '<Enter>',
+                scope_incremental = false,
+                node_decremental = '<Backspace>',
+            }
+        },
         highlight = {
             enable = true,
             disable = function(lang, buf)
