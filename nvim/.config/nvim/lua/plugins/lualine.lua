@@ -5,6 +5,7 @@ return {
         options = {
             theme = 'tokyonight',
             icons_enabled = true,
+            globalstatus = true,
             component_separators = { left = '', right = ''},
             section_separators = { left = '', right = ''},
         },
@@ -35,7 +36,7 @@ return {
                     icon = {  ' ', align = 'right' }
                 },
             },
-            lualine_y = { { 'datetime', style='%H:%M:%S' } },
+            lualine_y = { { 'datetime', icon = { ' ', align = 'right' }, style='%H:%M:%S' } },
             lualine_z = { 'progress', 'location' },
         },
     }

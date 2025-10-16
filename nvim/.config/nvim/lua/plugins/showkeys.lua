@@ -1,8 +1,6 @@
 return { 
     "nvzone/showkeys",
-    cmd = "ShowkeysToggle",
-    opts = { maxkeys = 5 },
-    lazy = false,
+    opts = { maxkeys = 3 },
     config = function(_, opts)
         require("showkeys").setup(opts)
         vim.cmd([[ShowkeysToggle]])

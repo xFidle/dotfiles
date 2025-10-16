@@ -1,5 +1,6 @@
 return {
     'stevearc/oil.nvim',
+    dependencies = { { "nvim-mini/mini.icons", opts = {} } },
     opts = {
         default_file_explorer = true,
         delete_to_trash = true,
@@ -13,11 +14,11 @@ return {
             ["<C-k>"] = false,
             ["<C-l>"] = false,
         },
+        confirmation = { border = 'rounded' },
+        keymaps_help = { border = 'rounded' }
     },
     keys = {
-        { '-', ':Oil<CR>', mode = 'n' },
-        { '_', function() require('oil').open(vim.fn.getcwd()) end, mode = 'n' },
+        { '-', ':Oil<CR>' },
+        { '_', function() require('oil').open(vim.fn.getcwd()) end },
     },
-    dependencies = { { "nvim-mini/mini.icons", opts = {} } },
-    lazy = false,
 }
