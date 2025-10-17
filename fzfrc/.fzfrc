@@ -6,7 +6,7 @@
 --border=none
 --color=bg+:-1
 --color=bg:-1
---color=border:#78a9ff
+--color=border:#535353
 --color=fg:#e4e4e5
 --color=gutter:#0c0c0c
 --color=header:#3ddbd9
