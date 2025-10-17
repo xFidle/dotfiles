@@ -1,4 +1,4 @@
---theme="tokyonight_night"
---style="numbers,changes,header"
+--theme="carbonfox"
+--style="numbers,header"
 --italic-text=never
 --tabs=2

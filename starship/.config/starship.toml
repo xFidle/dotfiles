@@ -7,6 +7,7 @@ $git_commit\
 $pacakge\
 $fill\
 $cmd_duration\
+$lua\
 $golang\
 $nodejs\
 $python\
@@ -123,6 +124,7 @@ disabled = true
 
 [lua]
 symbol = " "
+format = '[$symbol($version )]($style)'
 
 [memory_usage]
 symbol = "󰍛 "
