@@ -14,14 +14,15 @@ return {
             ["<C-k>"] = false,
             ["<C-l>"] = false,
         },
+        float = { border = 'rounded' },
         confirmation = { border = 'rounded' },
         keymaps_help = { border = 'rounded' }
     },
     keys = {
-        { '-', ':Oil<CR>', 
+        { '-', function() require('oil').open_float() end, 
             desc = 'Open oil' },
 
-        { '_', function() require('oil').open(vim.fn.getcwd()) end, 
+        { '_', function() require('oil').open_float(vim.fn.getcwd()) end, 
             desc = 'Open oil in cwd' },
     },
 }
