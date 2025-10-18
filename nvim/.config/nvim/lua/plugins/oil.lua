@@ -18,7 +18,10 @@ return {
         keymaps_help = { border = 'rounded' }
     },
     keys = {
-        { '-', ':Oil<CR>' },
-        { '_', function() require('oil').open(vim.fn.getcwd()) end },
+        { '-', ':Oil<CR>', 
+            desc = 'Open oil' },
+
+        { '_', function() require('oil').open(vim.fn.getcwd()) end, 
+            desc = 'Open oil in cwd' },
     },
 }

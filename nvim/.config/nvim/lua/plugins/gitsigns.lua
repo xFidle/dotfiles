@@ -23,10 +23,19 @@ return {
         },
     },
     keys = {
-        { '<leader>gs', '<Cmd>Gitsigns stage_hunk<CR>' },
-        { '<leader>gu', '<Cmd>Gitsigns undo_stage_hunk<CR>' },
-        { '<leader>gr', '<Cmd>Gitsigns reset_hunk<CR>' },
-        { '<leader>gt', '<Cmd>Gitsigns toggle_current_line_blame<CR>' },
-        { '<leader>gp', '<Cmd>Gitsigns preview_hunk_inline<CR>' }, 
+        { '<leader>gs', function() require('gitsigns').stage_hunk() end, 
+            desc = 'Stage hunk' },
+
+        { '<leader>gu', function() require('gitsigns').undo_stage_hunk() end,
+            desc = 'Undo stage hunk' },
+
+        { '<leader>gr', function() require('gitsigns').reset_hunk() end,
+            desc = 'Reset hunk' },
+
+        { '<leader>gt', function() require('gitsigns').toggle_current_line_blame() end,
+            desc = 'Toggle current line blame' },
+
+        { '<leader>gp', function() require('gitsigns').preview_hunk_inline() end,
+            desc = 'Preview hunk inline' }, 
     },
 }
