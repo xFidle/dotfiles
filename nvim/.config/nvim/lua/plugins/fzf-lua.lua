@@ -32,6 +32,9 @@ return {
         { '<leader>fo', function() require('fzf-lua').oldfiles() end,
             desc = 'Find old files' },
 
+        { '<leader>fm', function() require('fzf-lua').marks() end,
+            desc = 'Find marks' },
+
         { '<leader><leader>', function() require('fzf-lua').buffers() end,
             desc = 'Find active buffers' },
 
