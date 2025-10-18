@@ -16,7 +16,7 @@
 --color=marker:#ff007c
 --color=pointer:#eb5294
 --color=prompt:#78a9ff
---color=query:#c0caf5:regular
+--color=query:#78a9ff:regular
 --color=scrollbar:#535353
 --color=separator:#52bdff
 --color=spinner:#ff007c

@@ -1,7 +1,7 @@
 export ZSH="$HOME/.oh-my-zsh"
 
 # plugins
-plugins=(git zsh-syntax-highlighting zsh-autosuggestions colored-man-pages)
+plugins=(git colored-man-pages zsh-syntax-highlighting zsh-autosuggestions)
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 autoload -U compinit && compinit
 
@@ -92,7 +92,6 @@ clear() {
 # Aliases
 alias cat="bat --paging=never"
 alias ls="lsd"
-alias npm="pnpm"
 alias vim="nvim"
 
 # History
@@ -124,5 +123,3 @@ source <(fzf --zsh)
 
 # Starship init
 eval "$(starship init zsh)"
-
-
