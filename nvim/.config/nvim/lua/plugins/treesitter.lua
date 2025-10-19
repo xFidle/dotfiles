@@ -1,11 +1,11 @@
 return {
     {
-        "nvim-treesitter/nvim-treesitter",
+        'nvim-treesitter/nvim-treesitter',
         build = ':TSUpdate',
         branch = 'master',
         main = 'nvim-treesitter.configs',
         opts = {
-            ensure_installed = { "c", "go", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline" },
+            ensure_installed = { 'c', 'go', 'lua', 'vim', 'vimdoc', 'query', 'markdown', 'markdown_inline' },
             sync_install = false,
             indent = { enable = true },
             incremental_selection = {
@@ -30,7 +30,7 @@ return {
         }
     },
     {
-        "nvim-treesitter/nvim-treesitter-textobjects",
+        'nvim-treesitter/nvim-treesitter-textobjects',
         branch = 'master',
         main = 'nvim-treesitter.configs',
         opts = {
@@ -39,12 +39,12 @@ return {
                     enable = true,
                     lookahead = true,
                     keymaps = {
-                        ['af'] = "@function.outer",
-                        ['if'] = "@function.inner",
-                        ['as'] = "@class.outer",
-                        ['is'] = "@class.inner",
-                        ['ac'] = "@comment.outer",
-                        ['ic'] = "@comment.inner"
+                        ['af'] = '@function.outer',
+                        ['if'] = '@function.inner',
+                        ['as'] = '@class.outer',
+                        ['is'] = '@class.inner',
+                        ['ac'] = '@comment.outer',
+                        ['ic'] = '@comment.inner'
                     }
                 }
             }

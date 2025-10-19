@@ -1,4 +1,4 @@
-vim.g.mapleader = " "
+vim.g.mapleader = ' '
 
 -- GENERAL KEYMAPS
 vim.keymap.set('n', '<Esc>', '<Cmd>nohlsearch<CR>', {
@@ -28,7 +28,7 @@ vim.keymap.set('v', '>', '>gv', {
 vim.keymap.set('v', '<', '<gv', {
     desc = 'Outindent and keep selection' })
 
-vim.keymap.set("n", "<leader>sw", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], {
+vim.keymap.set('n', '<leader>sw', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], {
     desc = 'Substitute word under cursor'})
 
 -- FILE OPERATIONS

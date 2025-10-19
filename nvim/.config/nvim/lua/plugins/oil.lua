@@ -1,6 +1,6 @@
 return {
     'stevearc/oil.nvim',
-    dependencies = { { "nvim-mini/mini.icons", opts = {} } },
+    dependencies = { { 'nvim-mini/mini.icons', opts = {} } },
     opts = {
         default_file_explorer = true,
         delete_to_trash = true,
@@ -9,10 +9,10 @@ return {
             show_hidden = true,
         },
         keymaps = {
-            ["<C-h>"] = false,
-            ["<C-j>"] = false,
-            ["<C-k>"] = false,
-            ["<C-l>"] = false,
+            ['<C-h>'] = false,
+            ['<C-j>'] = false,
+            ['<C-k>'] = false,
+            ['<C-l>'] = false,
         },
         float = { border = 'rounded' },
         confirmation = { border = 'rounded' },
