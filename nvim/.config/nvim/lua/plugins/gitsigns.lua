@@ -23,7 +23,7 @@ return {
         },
     },
     keys = {
-        { '<leader>gs', function() require('gitsigns').stage_hunk() end, 
+        { '<leader>gs', function() require('gitsigns').stage_hunk() end,
             desc = 'Stage hunk' },
 
         { '<leader>gu', function() require('gitsigns').undo_stage_hunk() end,
@@ -36,6 +36,6 @@ return {
             desc = 'Toggle current line blame' },
 
         { '<leader>gp', function() require('gitsigns').preview_hunk_inline() end,
-            desc = 'Preview hunk inline' }, 
+            desc = 'Preview hunk inline' },
     },
 }

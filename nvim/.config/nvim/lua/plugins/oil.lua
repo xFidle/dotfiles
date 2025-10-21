@@ -14,9 +14,6 @@ return {
             ['<C-k>'] = false,
             ['<C-l>'] = false,
         },
-        float = { border = 'rounded' },
-        confirmation = { border = 'rounded' },
-        keymaps_help = { border = 'rounded' }
     },
     keys = {
         { '-', function() require('oil').open_float() end, 

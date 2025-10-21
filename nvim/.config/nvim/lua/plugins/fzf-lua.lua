@@ -20,7 +20,7 @@ return {
         { '<leader>fh', function() require('fzf-lua').helptags() end,
             desc = 'Find helptags' },
 
-        { '<leader>fk', function() require('fzf-lua').keymaps() end, 
+        { '<leader>fk', function() require('fzf-lua').keymaps() end,
             desc = 'Find keymaps' },
 
         { '<leader>fb', function() require('fzf-lua').builtin() end,

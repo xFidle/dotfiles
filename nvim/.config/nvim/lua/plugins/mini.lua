@@ -1,6 +1,7 @@
 return {
     { 
         'nvim-mini/mini.surround',
+        event =  { 'BufReadPre', 'BufNewFile' },
         opts = {
             mappings = {
                 add = 'gsa',
@@ -16,10 +17,12 @@ return {
     },
     {
         'nvim-mini/mini.pairs',
+        event = 'InsertEnter',
         config = true
     },
     {
         'nvim-mini/mini.splitjoin',
+        event =  { 'BufReadPre', 'BufNewFile' },
         config = true
     }
 }

@@ -13,6 +13,7 @@ vim.o.confirm = true
 vim.o.signcolumn = 'yes'
 vim.o.cursorline = true 
 vim.o.termguicolors = true
+vim.o.winborder = 'rounded'
 
 -- Disable default status line
 vim.o.showmode = false
