@@ -5,13 +5,28 @@ return {
         branch = 'master',
         main = 'nvim-treesitter.configs',
         opts = {
-            ensure_installed = { 'c', 'go', 'lua', 'vim', 'vimdoc', 'query', 'markdown', 'markdown_inline' },
+            ensure_installed = {
+                'c',
+                'cpp',
+                'css',
+                'go',
+                'html',
+                'javascript',
+                'lua',
+                'markdown',
+                'markdown_inline',
+                'query',
+                'typescript',
+                'vim',
+                'vimdoc',
+                'vue'
+            },
             sync_install = false,
             indent = { enable = true },
             incremental_selection = {
                 enable = true,
                 keymaps = {
-                    init_selection = '<Enter>', 
+                    init_selection = '<Enter>',
                     node_incremental = '<Enter>',
                     node_decremental = '<Backspace>',
                     scope_incremental = false,
@@ -19,7 +34,7 @@ return {
             },
             highlight = {
                 enable = true,
-                disable = function(lang, buf)
+                disable = function(_, buf)
                     local max_filesize = 100 * 1024 -- 100 KB
                     local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
                     if ok and stats and stats.size > max_filesize then

@@ -11,7 +11,7 @@ vim.o.confirm = true
 
 -- Visual options
 vim.o.signcolumn = 'yes'
-vim.o.cursorline = true 
+vim.o.cursorline = true
 vim.o.termguicolors = true
 vim.o.winborder = 'rounded'
 
@@ -22,11 +22,11 @@ vim.o.showmode = false
 vim.o.incsearch = true
 
 -- Undo history file
-vim.o.undofile = true 
+vim.o.undofile = true
 
 -- Indenation
-vim.o.expandtab = true -- use spaces when <Tab> is inserted 
-vim.o.smarttab = true  -- use shiftwidth when inserting <Tab>
+vim.o.expandtab = true -- use spaces when <Tab> is inserted
+vim.o.smarttab = true -- use shiftwidth when inserting <Tab>
 vim.o.autoindent = true -- take indent for new line from previous line
 vim.o.smartindent = true -- smart autoindenting for C programs
 vim.o.breakindent = true -- wrapped line repeats indent
@@ -44,4 +44,3 @@ vim.o.smartcase = true
 -- Default splits
 vim.o.splitright = true
 vim.o.splitbelow = true
-
