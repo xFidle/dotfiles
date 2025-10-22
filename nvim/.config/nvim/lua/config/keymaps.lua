@@ -9,6 +9,10 @@ keymap('n', '<leader>L', '<Cmd>Lazy<CR>', {
 keymap('n', '<leader>M', '<Cmd>Mason<CR>', {
     desc = 'Open Mason' })
 
+keymap('n', '<leader>cl', '<Cmd>LspInfo<CR>', {
+    desc = 'Open LspInfo'
+})
+
 -- GENERAL KEYMAPS
 keymap('n', '<Esc>', '<Cmd>nohlsearch<CR>', {
     desc = 'Clear search highlight' })
@@ -63,6 +67,18 @@ keymap('n', '<C-k>', '<C-w><C-k>', {
 keymap('n', '<C-l>', '<C-w><C-l>', {
     desc = 'Navigate to right window' })
 
+-- BUFFERS
+keymap('n', '<leader>bn', ':bnext', {
+    desc = 'Move to next buffer'
+})
+
+keymap('n', '<leader>bp', ':bprevious', {
+    desc = 'Move to previous buffer'
+})
+
+keymap('n', '<leadr>bd', '<Cmd>bdelete<CR>', {
+    desc = 'Delete buffer' })
+
 -- CURSOR BEHAVIOUR
 keymap('n', '<C-d>', '<C-d>zz', {
     desc = 'Scroll down and center' })
@@ -75,7 +91,6 @@ keymap('n', 'n', 'nzz', {
 
 keymap('n', 'N', 'Nzz', {
     desc = 'Jump to previous search result and center' })
-
 
 -- REGISTERS' OPERATIONS
 keymap('n', '<leader>p', [["+p]], {
@@ -95,3 +110,20 @@ keymap('n', '<leader>d', [["_d]], {
 
 keymap('v', '<leader>d', [["_d]], {
     desc = 'Delete selection without yanking' })
+
+-- DIAGNOSTICS
+keymap('n', ']e', function() vim.diagnostic.jump({ count = 1, severity = vim.diagnostic.severity.ERROR }) end, {
+    desc = 'Jump to next error'})
+
+keymap('n', '[e', function() vim.diagnostic.jump({ count = -1, severity = vim.diagnostic.severity.ERROR }) end, {
+    desc = 'Jump to next error'})
+
+keymap('n', ']w', function() vim.diagnostic.jump({ count = 1, severity = vim.diagnostic.severity.WARN }) end, {
+    desc = 'Jump to next error'})
+
+keymap('n', '[w', function() vim.diagnostic.jump({ count = -1, severity = vim.diagnostic.severity.WARN }) end, {
+    desc = 'Jump to next error'})
+
+keymap('n', '<leader>cd', vim.diagnostic.open_float, {
+    desc = 'Open float diagnostic window'
+})

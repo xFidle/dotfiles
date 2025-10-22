@@ -8,12 +8,12 @@ vim.api.nvim_create_autocmd('LspAttach', {
         end
         local fzf = require('fzf-lua')
 
-        keymap('n', 'grn', vim.lsp.buf.rename,{
-            desc = 'Rename all references'
+        keymap('n', 'K', vim.lsp.buf.hover, {
+            desc = 'Open documentation for symbol under cursor'
         })
 
-        keymap('n', 'gra', fzf.lsp_code_actions, {
-            desc = 'Find possible code actions'
+        keymap('n', 'grK', vim.lsp.buf.signature_help, {
+            desc = 'Open signature help for symbol under cursor'
         })
 
         keymap('n', 'grd', fzf.lsp_definitions, {
@@ -32,17 +32,18 @@ vim.api.nvim_create_autocmd('LspAttach', {
             desc = 'Goto implementation'
         })
 
-        keymap('n', 'grl', vim.diagnostic.open_float, {
-            desc = 'Open diagnostic window'
-        })
-
         keymap('n', 'grt', fzf.lsp_typedefs, {
-            desc = 'Find type definitions'
+            desc = 'Goto type definition'
         })
 
-        keymap('n', 'K', vim.lsp.buf.hover, {
-            desc = 'Open documentation for symbol under cursor'
+        keymap('n', '<leader>cr', vim.lsp.buf.rename,{
+            desc = 'Rename all references'
         })
+
+        keymap('n', '<leader>ca', fzf.lsp_code_actions, {
+            desc = 'Find possible code actions'
+        })
+
     end
 })
 
