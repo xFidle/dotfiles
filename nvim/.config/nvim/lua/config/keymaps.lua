@@ -53,7 +53,7 @@ keymap('n', '<leader>sw', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]]
 })
 
 -- FILE OPERATIONS
-keymap('n', '<leader>w', '<Cmd>w<CR>', {
+keymap('n', '<leader>w', '<Cmd>w!<CR>', {
   desc = 'Save file',
 })
 

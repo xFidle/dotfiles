@@ -49,7 +49,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 vim.diagnostic.config({
   severity_sort = true,
   underline = true,
-  update_in_insert = false,
+  update_in_insert = true,
   float = { border = 'rounded', source = 'if_many' },
   virtual_text = { current_line = true },
   signs = {
