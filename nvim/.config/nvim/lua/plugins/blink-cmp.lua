@@ -9,10 +9,21 @@ return {
       ['<C-j>'] = { 'select_next', 'fallback' },
     },
     appearance = { nerd_font_variant = 'mono' },
-    completion = { documentation = { auto_show = false } },
-    signature = { enabled = true },
+    completion = {
+      menu = {
+        winhighlight = 'BlinkCmpMenu:NormalFloat',
+        scrollbar = false,
+      },
+    },
+    documentation = { auto_show = false },
+    signature = {
+      enabled = true,
+      window = {
+        winhighlight = 'BlinkCmpSignatureHelp:NormalFloat',
+      },
+    },
     sources = { default = { 'lsp', 'path', 'snippets', 'buffer' } },
     fuzzy = { implementation = 'prefer_rust_with_warning' },
+    opts_extend = { 'sources.default' },
   },
-  opts_extend = { 'sources.default' },
 }
