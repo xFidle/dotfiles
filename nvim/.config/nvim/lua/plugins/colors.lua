@@ -1,12 +1,29 @@
 return {
-  'EdenEast/nightfox.nvim',
+  'folke/tokyonight.nvim',
   lazy = false,
   priority = 1000,
   opts = {
-    groups = { all = { Normal = { bg = 'NONE' }, NormalFloat = { link = 'Normal' } } },
+    style = 'night',
+    transparent = true,
+    styles = {
+      comments = { italic = true },
+      keywords = { italic = false, bold = false },
+      sidebars = 'normal',
+      floats = 'normal',
+    },
+    on_colors = function(c)
+      c.git.add = c.green
+      c.git.change = c.yellow
+      c.git.remove = c.red
+      c.border = c.cyan
+    end,
+    on_highlights = function(hl, c)
+      hl.FloatBorder = { fg = c.blue }
+      hl.WinSeparator = { fg = c.blue }
+    end,
   },
   config = function(_, opts)
-    require('nightfox').setup(opts)
-    vim.cmd([[colorscheme carbonfox]])
+    require('tokyonight').setup(opts)
+    vim.cmd([[colorscheme tokyonight]])
   end,
 }

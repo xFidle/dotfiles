@@ -6,18 +6,18 @@
 --border=none
 --color=bg+:-1
 --color=bg:-1
---color=border:#535353
---color=fg:#e4e4e5
---color=gutter:#0c0c0c
---color=header:#3ddbd9
+--color=border:#27a1b9
+--color=fg:#c0caf5
+--color=gutter:#16161e
+--color=header:#ff9e64
 --color=hl+:#2ac3de
 --color=hl:#2ac3de
 --color=info:#545c7e
 --color=marker:#ff007c
---color=pointer:#eb5294
---color=prompt:#78a9ff
---color=query:#78a9ff:regular
---color=scrollbar:#535353
---color=separator:#52bdff
+--color=pointer:#ff007c
+--color=prompt:#2ac3de
+--color=query:#c0caf5:regular
+--color=scrollbar:#27a1b9
+--color=separator:#ff9e64
 --color=spinner:#ff007c
 
