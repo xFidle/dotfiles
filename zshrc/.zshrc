@@ -121,5 +121,7 @@ export FZF_DEFAULT_OPTS_FILE=~/.fzfrc
 export FZF_COMPLETION_DIR_OPTS='--walker dir,follow,hidden'
 source <(fzf --zsh)
 
+eval "$(zoxide init zsh)"
+
 # Starship init
 eval "$(starship init zsh)"
