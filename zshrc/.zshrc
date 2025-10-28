@@ -108,7 +108,7 @@ setopt hist_ignore_dups
 setopt hist_find_no_dups
 
 # Keybindings
-bindkey '^f' autosuggest-accept
+bindkey '^y' autosuggest-accept
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 bindkey -M menuselect 'h' vi-backward-char

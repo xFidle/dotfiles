@@ -7,18 +7,13 @@ local servers = {
   'lua_ls',
   'ts_ls',
   'vue_ls',
-  'stylua',
 }
 
-local formatters = {
+local tools = {
   'stylua',
-  'black',
   'clang-format',
+  'ruff',
 }
-
-local linters = {}
-
-local daps = {}
 
 return {
   'mason-org/mason-lspconfig.nvim',
@@ -28,9 +23,18 @@ return {
     {
       'mason-org/mason.nvim',
       opts = {
-        ui = { icons = { package_installed = '✓', package_pending = '➜', package_uninstalled = '✗' } },
+        ui = {
+          icons = {
+            package_installed = '✓',
+            package_pending = '➜',
+            package_uninstalled = '✗',
+          },
+        },
       },
     },
-    { 'WhoIsSethDaniel/mason-tool-installer.nvim', opts = { ensure_installed = vim.tbl_extend('error', formatters, linters, daps) } },
+    {
+      'WhoIsSethDaniel/mason-tool-installer.nvim',
+      opts = { ensure_installed = vim.tbl_extend('force', servers, tools) },
+    },
   },
 }
