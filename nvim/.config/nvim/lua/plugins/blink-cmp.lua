@@ -14,8 +14,8 @@ return {
         winhighlight = 'BlinkCmpMenu:NormalFloat',
         scrollbar = false,
       },
+      documentation = { auto_show = false },
     },
-    documentation = { auto_show = false },
     signature = {
       enabled = true,
       window = {
