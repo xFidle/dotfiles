@@ -125,3 +125,5 @@ eval "$(zoxide init zsh)"
 
 # Starship init
 eval "$(starship init zsh)"
+
+. "$HOME/.local/bin/env"
