@@ -12,9 +12,16 @@ return {
     completion = {
       menu = {
         winhighlight = 'BlinkCmpMenu:NormalFloat',
-        scrollbar = false,
+        scrollbar = true,
+        draw = {
+          columns = {
+            { 'kind_icon', 'label', gap = 1 },
+            { 'label_description' },
+            { 'kind' },
+          },
+        },
       },
-      documentation = { auto_show = false },
+      documentation = { auto_show = true },
     },
     signature = {
       enabled = true,
