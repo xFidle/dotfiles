@@ -2,11 +2,11 @@ return {
   'stevearc/conform.nvim',
   opts = {
     formatters_by_ft = {
-      lua = { 'stylua' },
-      go = { 'gofmt' },
-      python = { 'ruff_fix', 'ruff_format', 'ruff_organize_imports' },
       c = { 'clang-format' },
       cpp = { 'clang-format' },
+      go = { 'gofmt' },
+      lua = { 'stylua' },
+      python = { 'ruff_fix', 'ruff_format', 'ruff_organize_imports' },
       tex = { 'latexindent' },
     },
     format_on_save = {
