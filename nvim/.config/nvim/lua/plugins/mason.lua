@@ -5,6 +5,7 @@ local servers = {
   'gopls',
   'html',
   'lua_ls',
+  'texlab',
   'ts_ls',
   'vue_ls',
 }
@@ -13,6 +14,7 @@ local tools = {
   'stylua',
   'clang-format',
   'ruff',
+  'latexindent',
 }
 
 return {
