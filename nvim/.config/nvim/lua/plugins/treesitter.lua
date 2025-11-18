@@ -9,6 +9,7 @@ return {
         'c',
         'cpp',
         'css',
+        'dockerfile',
         'go',
         'html',
         'javascript',
