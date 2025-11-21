@@ -8,7 +8,9 @@ return {
     },
   },
   keys = {
-    { '<leader>ff', function() require('fzf-lua').files() end, desc = 'Find files' },
+    { '<leader>ff', function() require('fzf-lua').git_files() end, desc = 'Find files' },
+
+    { '<leader>fF', function() require('fzf-lua').find_files() end, desc = 'Find files' },
 
     { '<leader>fg', function() require('fzf-lua').live_grep() end, desc = 'Find grep' },
 

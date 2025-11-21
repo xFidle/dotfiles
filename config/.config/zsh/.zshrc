@@ -16,7 +16,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  
 
 # pnpm
-export PNPM_HOME="/home/michau/.local/share/pnpm"
+export PNPM_HOME="$HOME/.local/share/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
@@ -90,13 +90,13 @@ clear() {
 }
 
 # Aliases
-alias cat="bat --paging=never"
-alias ls="lsd"
-alias vim="nvim"
+alias cat='bat --paging=never'
+alias ls='lsd'
+alias vim='nvim'
 
 # History
 HISTSIZE=5000
-HISTFILE=~/.zsh_history
+HISTFILE="$HOME/.zsh_history"
 SAVEHIST=$HISTSIZE
 HISTDUP=erase
 setopt appendhistory
@@ -117,13 +117,14 @@ bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 
 # fzf
-export FZF_DEFAULT_OPTS_FILE=~/.fzfrc
+export FZF_DEFAULT_OPTS_FILE="$HOME/.config/fzfrc/.fzfrc"
 export FZF_COMPLETION_DIR_OPTS='--walker dir,follow,hidden'
 source <(fzf --zsh)
 
 eval "$(zoxide init zsh)"
 
 # Starship init
+export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 eval "$(starship init zsh)"
 
 . "$HOME/.local/bin/env"
