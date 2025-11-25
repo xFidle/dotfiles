@@ -2,9 +2,10 @@ return {
   'stevearc/conform.nvim',
   opts = {
     formatters_by_ft = {
+      -- formatters have to be system installs
       c = { 'clang-format' },
       cpp = { 'clang-format' },
-      go = { 'gofmt' },
+      go = { 'gofmt', 'goimports', 'golines' },
       lua = { 'stylua' },
       python = { 'ruff_fix', 'ruff_format', 'ruff_organize_imports' },
       tex = { 'latexindent' },

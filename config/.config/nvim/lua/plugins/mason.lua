@@ -3,6 +3,7 @@ local servers = {
   'clangd',
   'cssls',
   'gopls',
+  'golangci_lint_ls',
   'html',
   'lua_ls',
   'texlab',
@@ -12,9 +13,6 @@ local servers = {
 
 local tools = {
   'stylua',
-  'clang-format',
-  'ruff',
-  'latexindent',
 }
 
 return {
