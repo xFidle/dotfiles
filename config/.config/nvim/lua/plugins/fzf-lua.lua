@@ -8,11 +8,11 @@ return {
     },
   },
   keys = {
-    { '<leader>ff', function() require('fzf-lua').git_files() end, desc = 'Find files' },
-
-    { '<leader>fF', function() require('fzf-lua').find_files() end, desc = 'Find files' },
+    { '<leader>ff', function() require('fzf-lua').files() end, desc = 'Find files' },
 
     { '<leader>fg', function() require('fzf-lua').live_grep() end, desc = 'Find grep' },
+
+    { '<leader>fG', function() require('fzf-lua').git_files() end, desc = 'Find files in git repo' },
 
     { '<leader>fc', function() require('fzf-lua').files({ cwd = vim.fn.expand('$HOME/dotfiles') }) end, desc = 'Find config (dotfiles repo) files' },
 
