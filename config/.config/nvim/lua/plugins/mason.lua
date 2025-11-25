@@ -34,7 +34,11 @@ return {
     },
     {
       'WhoIsSethDaniel/mason-tool-installer.nvim',
-      opts = { ensure_installed = vim.tbl_extend('force', servers, tools) },
+      opts = {
+        ensure_installed = vim.tbl_extend('force', servers, tools),
+        auto_update = true,
+        run_on_start = true,
+      },
     },
   },
 }
