@@ -6,6 +6,7 @@ local servers = {
   'golangci_lint_ls',
   'html',
   'lua_ls',
+  'ruff',
   'texlab',
   'ts_ls',
   'vue_ls',
