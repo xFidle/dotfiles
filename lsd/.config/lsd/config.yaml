@@ -12,4 +12,6 @@ sorting:
 date: '+%d %b %Y at %H:%M' 
 total-size: true
 icons:
-  when: never
+  when: auto
+  theme: fancy
+  separator: " "

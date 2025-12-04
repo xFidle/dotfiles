@@ -117,7 +117,7 @@ bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 
 # fzf
-export FZF_DEFAULT_OPTS_FILE="$HOME/.config/fzfrc/.fzfrc"
+export FZF_DEFAULT_OPTS_FILE="$HOME/.config/fzf/.fzfrc"
 export FZF_COMPLETION_DIR_OPTS='--walker dir,follow,hidden'
 source <(fzf --zsh)
 
