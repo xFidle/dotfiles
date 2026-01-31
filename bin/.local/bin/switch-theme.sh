@@ -32,8 +32,9 @@ echo "Theme '$theme' set in config file '$file'" >&1
 kitten themes $theme
 echo "KITTY: theme '$theme' set" >&1
 
-ln -sf $HOME/.config/tmux/themes/$theme.conf $HOME/.config/tmux/$current.conf
-tmux source $HOME/.config/tmux/tmux.conf
+ln -sf $(realpath --relative-to="$HOME/.config/tmux" "$HOME/.config/tmux/themes/$theme.conf") \
+    "$HOME/.config/tmux/$current.conf"
+tmux source "$HOME/.config/tmux/tmux.conf"
 echo "TMUX: theme '$theme' set" >&1
 
 if [[ -S "$NVIM_SOCKET" ]]; then
@@ -41,9 +42,11 @@ if [[ -S "$NVIM_SOCKET" ]]; then
     echo "NVIM: theme '$theme' set" >&1
 fi
 
-ln -sf $HOME/.config/fzf/themes/$theme.conf $HOME/.config/fzf/$current.conf
+ln -sf $(realpath --relative-to="$HOME/.config/fzf" "$HOME/.config/fzf/themes/$theme.conf") \
+    "$HOME/.config/fzf/$current.conf" 
 echo "FZF: theme '$theme' set" >&1
 
-ln -sf $HOME/.config/bat/themes/$theme.tmTheme $HOME/.config/bat/themes/$current.tmTheme
+ln -sf $(realpath --relative-to="$HOME/.config/bat/themes" "$HOME/.config/bat/themes/$theme.tmTheme") \
+    "$HOME/.config/bat/themes/$current.tmTheme"
 bat cache --build > /dev/null 2>&1
 echo "BAT: theme '$theme' set" >&1
