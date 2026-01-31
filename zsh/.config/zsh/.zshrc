@@ -92,7 +92,10 @@ clear() {
 # Aliases
 alias cat='bat --paging=never'
 alias ls='lsd'
-alias vim='nvim'
+
+export NVIM_SOCKET='/run/user/1000/nvim-socket'
+alias vim="nvim --listen $NVIM_SOCKET"
+alias nvim="nvim --listen $NVIM_SOCKET"
 
 # History
 HISTSIZE=5000
@@ -117,7 +120,7 @@ bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 
 # fzf
-export FZF_DEFAULT_OPTS_FILE="$HOME/.config/fzf/.fzfrc"
+export FZF_DEFAULT_OPTS_FILE="$HOME/.config/fzf/current-theme.conf"
 export FZF_COMPLETION_DIR_OPTS='--walker dir,follow,hidden'
 source <(fzf --zsh)
 

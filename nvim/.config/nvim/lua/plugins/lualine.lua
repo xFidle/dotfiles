@@ -5,11 +5,13 @@ return {
     options = {
       icons_enabled = true,
       globalstatus = true,
-      component_separators = { left = '', right = '' },
-      section_separators = { left = '', right = '' },
+      component_separators = { left = '|', right = '|' },
+      section_separators = { left = '', right = '' },
     },
     sections = {
-      lualine_a = { 'mode' },
+      lualine_a = {
+        { 'mode', icon = '' },
+      },
       lualine_b = {
         { 'branch', icon = '' },
         'diff',
@@ -25,15 +27,19 @@ return {
         end,
         'diagnostics',
       },
-      lualine_x = { { 'lsp_status', icon = { ' ', align = 'right' } } },
+      lualine_x = {
+        { 'lsp_status', icon = { ' ', align = 'right' } },
+      },
       lualine_y = {
         {
           function() return vim.fn.fnamemodify(vim.fn.getcwd(), ':t') end,
           icon = { ' ', align = 'right' },
         },
-        { 'datetime', icon = { ' ', align = 'right' }, style = '%H:%M:%S' },
       },
-      lualine_z = { 'progress', 'location' },
+      lualine_z = {
+        'progress',
+        'location',
+      },
     },
   },
 }

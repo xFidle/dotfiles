@@ -43,8 +43,13 @@ return {
         },
       },
       sources = {
-        default = { 'lsp', 'path', 'snippets', 'buffer', 'vimtex' },
+        default = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer', 'vimtex' },
         providers = {
+          lazydev = {
+            name = 'LazyDev',
+            module = 'lazydev.integrations.blink',
+            score_offset = 100,
+          },
           vimtex = {
             name = 'vimtex',
             module = 'blink.compat.source',
