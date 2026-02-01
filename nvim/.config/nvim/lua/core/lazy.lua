@@ -19,7 +19,7 @@ require('lazy').setup({
   spec = {
     { import = 'plugins' },
   },
-  install = { colorscheme = { 'tokyonight' } },
+  install = { colorscheme = { require('config.util').get_colorscheme() } },
   checker = { enabled = true },
   ui = { border = 'rounded' },
   change_detection = { enabled = true, notify = false },

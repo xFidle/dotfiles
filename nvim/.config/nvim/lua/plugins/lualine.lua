@@ -31,6 +31,8 @@ return {
         { 'lsp_status', icon = { ' ', align = 'right' } },
       },
       lualine_y = {
+        'encoding',
+        'fileformat',
         {
           function() return vim.fn.fnamemodify(vim.fn.getcwd(), ':t') end,
           icon = { ' ', align = 'right' },

@@ -12,8 +12,14 @@ keymap('n', '<leader>M', '<Cmd>Mason<CR>', {
   desc = 'Open Mason',
 })
 
-keymap('n', '<leader>cl', '<Cmd>LspInfo<CR>', {
+-- LSP COMMANDS
+
+keymap('n', '<leader>li', '<Cmd>LspInfo<CR>', {
   desc = 'Open LspInfo',
+})
+
+keymap('n', '<leader>lr', '<Cmd>LspRestart<CR>', {
+  desc = 'Restart LSP',
 })
 
 -- GENERAL KEYMAPS
