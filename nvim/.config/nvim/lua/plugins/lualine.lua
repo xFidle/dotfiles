@@ -26,6 +26,14 @@ return {
           return '%#' .. hl_group .. '#' .. icon .. '%* ' .. filename
         end,
         'diagnostics',
+        {
+          function()
+            local reg = vim.fn.reg_recording()
+            return ' recording to ' .. reg
+          end,
+          color = 'DiagnosticError',
+          cond = function() return vim.fn.reg_recording() ~= '' end,
+        },
       },
       lualine_x = {
         { 'lsp_status', icon = { ' ', align = 'right' } },

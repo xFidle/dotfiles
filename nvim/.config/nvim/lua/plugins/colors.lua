@@ -29,6 +29,7 @@ return {
     opts = {
       transparent = true,
       italic = false,
+      on_highlights = function(hl, c) hl.NotifyBackground = { bg = c.bg } end,
     },
   },
 }
