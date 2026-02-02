@@ -37,9 +37,13 @@ ln -sf $(realpath --relative-to="$TMUX_PATH" "$TMUX_PATH/themes/$THEME.conf") \
 tmux source "$HOME/.config/tmux/tmux.conf"
 echo "TMUX: theme '$THEME' set" >&1
 
-if [[ -S "$NVIM_SOCKET" ]]; then
-    nvim --server $NVIM_SOCKET --remote-send ":colorscheme $THEME<CR>"
-    echo "NVIM: theme '$THEME' set" >&1
+if [[ -d "$NVIM_SOCKET_DIR" ]]; then
+    for sock in "$NVIM_SOCKET_DIR"/*; do
+        if [[ -S "$sock" ]]; then
+            nvim --server $sock --remote-send ":silent colorscheme $THEME<CR>"
+            echo "NVIM: theme '$THEME' set for socket '$sock'" >&1
+        fi
+    done
 fi
 
 FZF_PATH="$HOME/.config/fzf"
