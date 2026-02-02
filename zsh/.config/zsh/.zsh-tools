@@ -1,0 +1,11 @@
+export NVIM_SOCKET_DIR="/run/user/$UID/nvim-sockets"
+mkdir -p $NVIM_SOCKET_DIR
+
+nvim() {
+  local socket="$NVIM_SOCKET_DIR/nvim-$(date +%s%N).sock"
+  command nvim --listen "$socket" "$@"
+}
+
+export FZF_DEFAULT_OPTS_FILE="$HOME/.config/fzf/current-theme.conf"
+export FZF_COMPLETION_DIR_OPTS='--walker dir,follow,hidden'
+source <(fzf --zsh)
