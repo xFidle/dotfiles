@@ -2,6 +2,12 @@ return {
   'folke/noice.nvim',
   event = 'VeryLazy',
   opts = {
+    routes = {
+      {
+        view = 'notify',
+        filter = { event = 'msg_show', kind = { 'shell_out', 'shell_err' } },
+      },
+    },
     presets = { lsp_doc_border = true },
     views = {
       cmdline_popup = {

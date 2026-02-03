@@ -6,6 +6,7 @@ return {
     main = 'nvim-treesitter.configs',
     opts = {
       ensure_installed = {
+        'bash',
         'c',
         'cpp',
         'css',
@@ -17,6 +18,7 @@ return {
         'markdown',
         'markdown_inline',
         'python',
+        'regex',
         'query',
         'typescript',
         'vim',
