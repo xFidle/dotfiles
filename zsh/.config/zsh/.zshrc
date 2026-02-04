@@ -3,7 +3,7 @@ export ZSH_CONFIG="$HOME/.config/zsh"
 export EDITOR='nvim'
 export VISUAL='nvim'
 
-plugins=(git colored-man-pages zsh-syntax-highlighting zsh-autosuggestions)
+plugins=(git colored-man-pages zsh-syntax-highlighting zsh-autosuggestions zsh-system-clipboard)
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 autoload -U compinit && compinit
 source "$ZSH/oh-my-zsh.sh"
