@@ -19,6 +19,11 @@ return {
         },
       },
     },
+    lsp = {
+      signature = {
+        enabled = false,
+      },
+    },
   },
   dependencies = {
     'MunifTanjim/nui.nvim',
