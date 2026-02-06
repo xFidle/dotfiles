@@ -5,7 +5,7 @@ return {
     routes = {
       {
         view = 'notify',
-        filter = { event = 'msg_show', kind = { 'shell_out', 'shell_err' } },
+        filter = { event = 'msg_show', kind = { 'shell_out', 'shell_err', 'bufwrite' } },
       },
       {
         filter = { event = 'notify', find = 'No information available' },
@@ -19,11 +19,7 @@ return {
         },
       },
     },
-    lsp = {
-      signature = {
-        enabled = false,
-      },
-    },
+    lsp = { signature = { enabled = false } },
   },
   dependencies = {
     'MunifTanjim/nui.nvim',
