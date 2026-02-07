@@ -14,6 +14,7 @@ return {
         'go',
         'html',
         'javascript',
+        'latex',
         'lua',
         'markdown',
         'markdown_inline',
