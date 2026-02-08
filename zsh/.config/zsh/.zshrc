@@ -17,6 +17,7 @@ alias cat='bat --paging=never'
 alias ls='lsd'
 alias vi='nvim'
 alias vim='nvim'
+alias opencode='opencode --port'
 
 HISTSIZE=5000
 HISTFILE="$HOME/.zsh_history"
