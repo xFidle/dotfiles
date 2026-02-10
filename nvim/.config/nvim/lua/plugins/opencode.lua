@@ -1,10 +1,5 @@
 return {
   'NickvanDyke/opencode.nvim',
-  dependencies = {
-    'folke/snacks.nvim',
-    lazy = false,
-    opts = { input = {}, picker = {} },
-  },
   keys = {
     {
       '<leader>oa',
