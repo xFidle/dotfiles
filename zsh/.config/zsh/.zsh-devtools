@@ -13,6 +13,7 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 
+# OPENCODE
 export PATH=/home/michau/.opencode/bin:$PATH
 _opencode_yargs_completions()
 {

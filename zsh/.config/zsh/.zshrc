@@ -8,9 +8,9 @@ fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 autoload -U compinit && compinit
 source "$ZSH/oh-my-zsh.sh"
 
-source "$ZSH_CONFIG/.zsh-devtools"
 source "$ZSH_CONFIG/.zsh-vi"
-source "$ZSH_CONFIG/.zsh-tools"
+source "$ZSH_CONFIG/.zsh-devtools"
+source "$ZSH_CONFIG/.zsh-clitools"
 source "$ZSH_CONFIG/.zsh-prompt"
 
 alias cat='bat --paging=never'
