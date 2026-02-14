@@ -1,8 +1,3 @@
-local keymap_preset = {
-  ['<C-k>'] = { 'select_prev', 'fallback' },
-  ['<C-j>'] = { 'select_next', 'fallback' },
-}
-
 return {
   {
     'saghen/blink.compat',
@@ -21,7 +16,7 @@ return {
         ['<C-j>'] = { 'select_next', 'fallback' },
       },
       cmdline = {
-        completion = { menu = { auto_show = true } },
+        completion = { menu = { auto_show = false } },
       },
       appearance = { nerd_font_variant = 'mono' },
       completion = {
