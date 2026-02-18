@@ -5,7 +5,7 @@ return {
     routes = {
       {
         view = 'notify',
-        filter = { event = 'msg_show', kind = { 'shell_out', 'shell_err', 'bufwrite' } },
+        filter = { event = 'msg_show', kind = { 'shell_out', 'shell_err' } },
       },
       {
         filter = { event = 'notify', find = 'No information available' },
