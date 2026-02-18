@@ -13,6 +13,9 @@ local servers = {
 }
 
 local tools = {
+  'clang-format',
+  'goimports',
+  'golines',
   'stylua',
 }
 

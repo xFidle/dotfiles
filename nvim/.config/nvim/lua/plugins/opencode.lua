@@ -16,6 +16,7 @@ return {
     {
       '<leader>os',
       function() require('opencode').select() end,
+      mode = { 'n', 'v' },
       desc = 'Select opencode action',
     },
     {

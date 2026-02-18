@@ -21,6 +21,7 @@ return {
         'python',
         'regex',
         'query',
+        'sql',
         'typescript',
         'vim',
         'vimdoc',
