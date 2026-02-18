@@ -23,12 +23,28 @@ return {
     },
   },
   keys = {
-    { '<leader>gs', function() require('gitsigns').stage_hunk() end, desc = 'Stage hunk' },
+    {
+      '<leader>gs',
+      function() require('gitsigns').stage_hunk() end,
+      desc = 'Stage hunk',
+    },
 
-    { '<leader>gr', function() require('gitsigns').reset_hunk() end, desc = 'Reset hunk' },
+    {
+      '<leader>gr',
+      function() require('gitsigns').reset_hunk() end,
+      desc = 'Reset hunk',
+    },
 
-    { '<leader>gt', function() require('gitsigns').toggle_current_line_blame() end, desc = 'Toggle current line blame' },
+    {
+      '<leader>gt',
+      function() require('gitsigns').toggle_current_line_blame() end,
+      desc = 'Toggle current line blame',
+    },
 
-    { '<leader>gp', function() require('gitsigns').preview_hunk_inline() end, desc = 'Preview hunk inline' },
+    {
+      '<leader>gp',
+      function() require('gitsigns').preview_hunk_inline() end,
+      desc = 'Preview hunk inline',
+    },
   },
 }

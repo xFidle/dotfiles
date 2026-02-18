@@ -26,7 +26,15 @@ return {
     { 'rcarriga/nvim-notify', opts = { stages = 'fade' } },
   },
   keys = {
-    { '<leader>nd', function() require('noice').cmd('dismiss') end, desc = 'Noice dismiss' },
-    { '<leader>fn', function() require('noice').cmd('fzf') end, desc = 'Find notifications' },
+    {
+      '<leader>nd',
+      function() require('noice').cmd('dismiss') end,
+      desc = 'Noice dismiss',
+    },
+    {
+      '<leader>fn',
+      function() require('noice').cmd('fzf') end,
+      desc = 'Find notifications',
+    },
   },
 }
