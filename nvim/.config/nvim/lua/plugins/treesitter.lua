@@ -22,6 +22,7 @@ return {
         'regex',
         'query',
         'sql',
+        'toml',
         'typescript',
         'vim',
         'vimdoc',

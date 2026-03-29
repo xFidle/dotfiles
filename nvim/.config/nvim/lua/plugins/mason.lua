@@ -7,6 +7,7 @@ local servers = {
   'html',
   'lua_ls',
   'ruff',
+  'rust_analyzer',
   'texlab',
   'ts_ls',
   'vue_ls',
