@@ -7,6 +7,7 @@ return {
       go = { 'gofmt', 'goimports', 'golines' },
       lua = { 'stylua' },
       python = { 'ruff_fix', 'ruff_format', 'ruff_organize_imports' },
+      rust = { 'rustfmt' },
       tex = { 'latexindent' },
     },
     format_on_save = {
