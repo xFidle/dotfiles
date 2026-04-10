@@ -14,6 +14,11 @@ return {
       timeout = 500,
       lsp_format = 'fallback',
     },
+    formatters = {
+      golines = {
+        append_args = { '--max-len', '120' },
+      },
+    },
   },
   event = 'BufWritePre',
   keys = {

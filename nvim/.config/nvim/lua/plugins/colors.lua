@@ -29,7 +29,12 @@ return {
     opts = {
       transparent = true,
       italic = false,
-      on_highlights = function(hl, c) hl.NotifyBackground = { bg = c.bg } end,
+      on_highlights = function(hl, c)
+        hl.NotifyBackground = { bg = c.bg }
+        hl.Pmenu = { fg = c.fg }
+        hl.PmenuSel = { fg = c.constant, bg = c.line }
+        hl.PmenuBorder = { fg = c.floatBorder }
+      end,
     },
   },
 }

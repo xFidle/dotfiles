@@ -1,5 +1,6 @@
 local servers = {
   'basedpyright',
+  'bashls',
   'clangd',
   'cssls',
   'gopls',
