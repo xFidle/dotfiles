@@ -1,0 +1,79 @@
+" General Options
+set relativenumber
+set mouse=a
+set scrolloff=10
+set incsearch
+set nowrap
+set ignorecase
+set smartcase
+set splitright
+set splitbelow
+set NERDTree
+
+let mapleader=" "
+
+" general keymaps
+nnoremap x "_x
+nnoremap <Esc> :nohlsearch<CR>
+nnoremap <leader>; maA;<Esc>`a
+nnoremap J maJ`a
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+vnoremap > >gv
+vnoremap < <gv
+nnoremap <leader>sw :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
+
+" file operations
+nnoremap <leader>w :w!<CR>
+nnoremap <leader>q :q<CR>
+
+" window navigation
+nnoremap <leader>sv <C-w>v
+nnoremap <leader>sh <C-w>s
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+" buffers mapped to idea's tabs
+nnoremap <leader>bn :action NextTab<CR>
+nnoremap <leader>bp :action PreviousTab<CR>
+nnoremap <leader>bd :action CloseActiveTab<CR>
+
+" cursor behavior
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
+nnoremap n nzz
+nnoremap N Nzz
+
+" registers' operations
+nnoremap <leader>p "+p
+vnoremap <leader>p "_dP
+nnoremap <leader>y "+y
+vnoremap <leader>y "+y
+nnoremap <leader>d "_d
+vnoremap <leader>d "_d
+
+" diagnostics
+nnoremap ]e :action GotoNextError<CR>
+nnoremap [e :action GotoPreviousError<CR>
+nnoremap ]d :action GotoNextError<CR>
+nnoremap [d :action GotoPreviousError<CR>
+nnoremap <leader>cd :action ShowErrorDescription<CR>
+
+" lsp-like features
+nnoremap grd :action GotoDeclaration<CR>
+nnoremap grr :action FindUsages<CR>
+nnoremap gri :action GotoImplementation<CR>
+nnoremap grt :action GotoTypeDeclaration<CR>
+nnoremap <leader>cr :action RenameElement<CR>
+nnoremap <leader>cR :action Refactorings.QuickListPopupAction<CR>
+nnoremap <leader>ca :action ShowIntentionActions<CR>
+
+" fzf-like features
+nnoremap <leader>ff :action GotoFile<CR>
+nnoremap <leader>fg :action FindInPath<CR>
+nnoremap <leader><leader> :action Switcher<CR>
+
+" NERDTree
+nnoremap <leader>nn :NERDTree<CR>
