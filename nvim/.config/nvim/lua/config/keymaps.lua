@@ -64,7 +64,7 @@ keymap('n', '<leader>w', '<Cmd>w!<CR>', {
   desc = 'Save file',
 })
 
-keymap('n', '<leader>q', '<Cmd>q<CR>', {
+keymap('n', '<leader>q', '<Cmd>wq!<CR>', {
   desc = 'Quit window',
 })
 
