@@ -12,6 +12,7 @@ return {
         'css',
         'dockerfile',
         'go',
+        'haskell',
         'html',
         'javascript',
         'latex',

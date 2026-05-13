@@ -5,6 +5,7 @@ local servers = {
   'cssls',
   'gopls',
   'golangci_lint_ls',
+  'hls',
   'html',
   'lua_ls',
   'ruff',
