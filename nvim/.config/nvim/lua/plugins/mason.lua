@@ -3,6 +3,7 @@ local servers = {
   'bashls',
   'clangd',
   'cssls',
+  'eslint',
   'gopls',
   'golangci_lint_ls',
   'hls',
@@ -19,6 +20,7 @@ local tools = {
   'clang-format',
   'goimports',
   'golines',
+  'prettier',
   'stylua',
 }
 
