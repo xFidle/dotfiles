@@ -14,11 +14,7 @@ keymap('n', '<leader>M', '<Cmd>Mason<CR>', {
 
 -- LSP COMMANDS
 
-keymap('n', '<leader>li', '<Cmd>LspInfo<CR>', {
-  desc = 'Open LspInfo',
-})
-
-keymap('n', '<leader>lr', '<Cmd>LspRestart<CR>', {
+keymap('n', '<leader>lr', '<Cmd>lsp restart<CR>', {
   desc = 'Restart LSP',
 })
 
