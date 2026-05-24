@@ -12,6 +12,7 @@ return {
       rust = { 'rustfmt' },
       tex = { 'latexindent' },
       typescript = { 'prettier' },
+      vue = { 'prettier' },
     },
     format_on_save = {
       timeout = 500,
