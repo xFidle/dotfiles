@@ -44,3 +44,6 @@ vim.o.smartcase = true
 -- Default splits
 vim.o.splitright = true
 vim.o.splitbelow = true
+
+-- Checkhealth window
+vim.g.health = { style = 'float' }
