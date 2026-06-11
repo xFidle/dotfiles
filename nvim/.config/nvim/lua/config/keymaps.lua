@@ -92,6 +92,14 @@ keymap('n', '<leader>q', '<Cmd>q!<CR>', {
   desc = 'Quit window',
 })
 
+keymap('n', '<leader>r', '<Cmd>restart<CR>', {
+  desc = 'Restart editor',
+})
+
+keymap('n', '<leader>a', 'ggVG', {
+  desc = 'Select all',
+})
+
 -- WINDOW NAVIGATION
 keymap('n', '<leader>sv', '<C-w>v', {
   desc = 'Create vertical split',
