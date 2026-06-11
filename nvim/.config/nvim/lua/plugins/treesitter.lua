@@ -2,10 +2,10 @@ return {
   {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
-    branch = 'master',
-    main = 'nvim-treesitter.configs',
-    opts = {
-      ensure_installed = {
+    branch = 'main',
+    main = 'nvim-treesitter',
+    init = function()
+      local ensure_installed = {
         'bash',
         'c',
         'cpp',
@@ -28,7 +28,15 @@ return {
         'vim',
         'vimdoc',
         'vue',
-      },
+      }
+      local already_installed = require('nvim-treesitter.config').get_installed()
+      local to_install = vim
+        .iter(ensure_installed)
+        :filter(function(parser) return not vim.tbl_contains(already_installed, parser) end)
+        :totable()
+      require('nvim-treesitter').install(to_install)
+    end,
+    opts = {
       sync_install = false,
       indent = { enable = true },
       incremental_selection = {
@@ -54,21 +62,19 @@ return {
   },
   {
     'nvim-treesitter/nvim-treesitter-textobjects',
-    branch = 'master',
-    main = 'nvim-treesitter.configs',
+    branch = 'main',
+    init = function() vim.g.no_plugin_maps = true end,
     opts = {
-      textobjects = {
-        select = {
-          enable = true,
-          lookahead = true,
-          keymaps = {
-            ['af'] = '@function.outer',
-            ['if'] = '@function.inner',
-            ['as'] = '@class.outer',
-            ['is'] = '@class.inner',
-            ['ac'] = '@comment.outer',
-            ['ic'] = '@comment.inner',
-          },
+      select = {
+        enable = true,
+        lookahead = true,
+        keymaps = {
+          ['af'] = '@function.outer',
+          ['if'] = '@function.inner',
+          ['as'] = '@class.outer',
+          ['is'] = '@class.inner',
+          ['ac'] = '@comment.outer',
+          ['ic'] = '@comment.inner',
         },
       },
     },

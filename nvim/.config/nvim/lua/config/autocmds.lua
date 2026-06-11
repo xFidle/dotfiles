@@ -4,6 +4,12 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 vim.api.nvim_create_autocmd('FileType', {
+  pattern = { '<filetype>' },
+  callback = function() vim.treesitter.start() end,
+})
+vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+
+vim.api.nvim_create_autocmd('FileType', {
   pattern = 'tex',
   callback = function() vim.opt_local.textwidth = 80 end,
 })
