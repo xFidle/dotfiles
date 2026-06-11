@@ -155,24 +155,3 @@ keymap('n', '<leader>d', [["_d]], {
 keymap('v', '<leader>d', [["_d]], {
   desc = 'Delete selection without yanking',
 })
-
--- DIAGNOSTICS
-keymap('n', ']e', function() vim.diagnostic.jump({ count = 1, severity = vim.diagnostic.severity.ERROR }) end, {
-  desc = 'Jump to next error',
-})
-
-keymap('n', '[e', function() vim.diagnostic.jump({ count = -1, severity = vim.diagnostic.severity.ERROR }) end, {
-  desc = 'Jump to next error',
-})
-
-keymap('n', ']w', function() vim.diagnostic.jump({ count = 1, severity = vim.diagnostic.severity.WARN }) end, {
-  desc = 'Jump to next error',
-})
-
-keymap('n', '[w', function() vim.diagnostic.jump({ count = -1, severity = vim.diagnostic.severity.WARN }) end, {
-  desc = 'Jump to next error',
-})
-
-keymap('n', '<leader>cd', vim.diagnostic.open_float, {
-  desc = 'Open float diagnostic window',
-})
