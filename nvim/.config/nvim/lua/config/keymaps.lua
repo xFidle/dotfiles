@@ -30,6 +30,22 @@ keymap('n', '<leader>li', '<Cmd>checkhealth lsp<CR>', {
   desc = 'Display LSP info',
 })
 
+-- TREESITTER INCREMENTAL
+keymap('n', '<Enter>', 'v_an', {
+  remap = true,
+  desc = 'Initialize incremental selection',
+})
+
+keymap('x', '<Enter>', 'an', {
+  remap = true,
+  desc = 'Select parent (outer) node ',
+})
+
+keymap('x', '<BS>', 'in', {
+  remap = true,
+  desc = 'Select child (inner) node',
+})
+
 -- GENERAL KEYMAPS
 keymap('n', '<Esc>', '<Cmd>nohlsearch<CR>', {
   desc = 'Clear search highlight',
