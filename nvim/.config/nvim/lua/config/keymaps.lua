@@ -18,6 +18,18 @@ keymap('n', '<leader>lr', '<Cmd>lsp restart<CR>', {
   desc = 'Restart LSP',
 })
 
+keymap('n', '<leader>le', '<Cmd>lsp enable<CR>', {
+  desc = 'Enable LSP',
+})
+
+keymap('n', '<leader>ld', '<Cmd>lsp disable<CR>', {
+  desc = 'Disable LSP',
+})
+
+keymap('n', '<leader>li', '<Cmd>checkhealth lsp<CR>', {
+  desc = 'Display LSP info',
+})
+
 -- GENERAL KEYMAPS
 keymap('n', '<Esc>', '<Cmd>nohlsearch<CR>', {
   desc = 'Clear search highlight',
@@ -90,11 +102,11 @@ keymap('n', '<C-l>', '<C-w><C-l>', {
 })
 
 -- BUFFERS
-keymap('n', '<leader>bn', ':bnext', {
+keymap('n', '<leader>bn', '<Cmd>bnext<CR>', {
   desc = 'Move to next buffer',
 })
 
-keymap('n', '<leader>bp', ':bprevious', {
+keymap('n', '<leader>bp', '<Cmd>bprevious<CR>', {
   desc = 'Move to previous buffer',
 })
 
