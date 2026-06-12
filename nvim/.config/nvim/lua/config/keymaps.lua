@@ -4,29 +4,29 @@ vim.g.maplocalleader = ','
 local keymap = vim.keymap.set
 
 -- FLOATING WINDOWS CONFIG
-keymap('n', '<leader>L', '<Cmd>Lazy<CR>', {
+keymap('n', '<leader>L', '<CMD>Lazy<CR>', {
   desc = 'Open Lazy',
 })
 
-keymap('n', '<leader>M', '<Cmd>Mason<CR>', {
+keymap('n', '<leader>M', '<CMD>Mason<CR>', {
   desc = 'Open Mason',
 })
 
 -- LSP COMMANDS
 
-keymap('n', '<leader>lr', '<Cmd>lsp restart<CR>', {
+keymap('n', '<leader>lr', '<CMD>lsp restart<CR>', {
   desc = 'Restart LSP',
 })
 
-keymap('n', '<leader>le', '<Cmd>lsp enable<CR>', {
+keymap('n', '<leader>le', '<CMD>lsp enable<CR>', {
   desc = 'Enable LSP',
 })
 
-keymap('n', '<leader>ld', '<Cmd>lsp disable<CR>', {
+keymap('n', '<leader>ld', '<CMD>lsp disable<CR>', {
   desc = 'Disable LSP',
 })
 
-keymap('n', '<leader>li', '<Cmd>checkhealth lsp<CR>', {
+keymap('n', '<leader>li', '<CMD>checkhealth vim.lsp<CR>', {
   desc = 'Display LSP info',
 })
 
@@ -51,7 +51,7 @@ keymap('x', '<BS>', 'in', {
 })
 
 -- GENERAL KEYMAPS
-keymap('n', '<Esc>', '<Cmd>nohlsearch<CR>', {
+keymap('n', '<Esc>', '<CMD>nohlsearch<CR>', {
   desc = 'Clear search highlight',
 })
 
@@ -88,15 +88,15 @@ keymap('n', '<leader>sw', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]]
 })
 
 -- FILE OPERATIONS
-keymap('n', '<leader>w', '<Cmd>w!<CR>', {
+keymap('n', '<leader>w', '<CMD>w!<CR>', {
   desc = 'Save file',
 })
 
-keymap('n', '<leader>q', '<Cmd>q!<CR>', {
+keymap('n', '<leader>q', '<CMD>q!<CR>', {
   desc = 'Quit window',
 })
 
-keymap('n', '<leader>r', '<Cmd>restart<CR>', {
+keymap('n', '<leader>r', '<CMD>restart<CR>', {
   desc = 'Restart editor',
 })
 
@@ -130,15 +130,15 @@ keymap('n', '<C-l>', '<C-w><C-l>', {
 })
 
 -- BUFFERS
-keymap('n', '<leader>bn', '<Cmd>bnext<CR>', {
+keymap('n', '<leader>bn', '<CMD>bnext<CR>', {
   desc = 'Move to next buffer',
 })
 
-keymap('n', '<leader>bp', '<Cmd>bprevious<CR>', {
+keymap('n', '<leader>bp', '<CMD>bprevious<CR>', {
   desc = 'Move to previous buffer',
 })
 
-keymap('n', '<leadr>bd', '<Cmd>bdelete<CR>', {
+keymap('n', '<leadr>bd', '<CMD>bdelete<CR>', {
   desc = 'Delete buffer',
 })
 

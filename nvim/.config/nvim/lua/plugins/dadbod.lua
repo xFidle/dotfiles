@@ -7,12 +7,12 @@ return {
   keys = {
     {
       '<leader>do',
-      '<Cmd>DBUI<CR>',
+      '<CMD>DBUI<CR>',
       desc = 'Open vim-dadbod-ui',
     },
     {
       '<leader>dt',
-      '<Cmd>DBUIToggle<CR>',
+      '<CMD>DBUIToggle<CR>',
       desc = 'Toggle vim-dadbod-ui',
     },
   },

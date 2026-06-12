@@ -12,27 +12,27 @@ return {
   keys = {
     {
       '<c-h>',
-      '<Cmd><C-U>TmuxNavigateLeft<CR>',
+      '<CMD><C-U>TmuxNavigateLeft<CR>',
       desc = 'Navigate to left TMUX pane',
     },
     {
       '<c-j>',
-      '<Cmd><C-U>TmuxNavigateDown<CR>',
+      '<CMD><C-U>TmuxNavigateDown<CR>',
       desc = 'Navigate to bottom TMUX pane',
     },
     {
       '<c-k>',
-      '<Cmd><C-U>TmuxNavigateUp<CR>',
+      '<CMD><C-U>TmuxNavigateUp<CR>',
       desc = 'Navigate to upper TMUX pane',
     },
     {
       '<c-l>',
-      '<Cmd><C-U>TmuxNavigateRight<CR>',
+      '<CMD><C-U>TmuxNavigateRight<CR>',
       desc = 'Navigate to right TMUX pane',
     },
     {
       '<c-\\>',
-      '<Cmd><C-U>TmuxNavigatePrevious<CR>',
+      '<CMD><C-U>TmuxNavigatePrevious<CR>',
       desc = 'Navigate to previous TMUX pane',
     },
   },
