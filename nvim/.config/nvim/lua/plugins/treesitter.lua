@@ -36,6 +36,33 @@ return {
         :totable()
       require('nvim-treesitter').install(to_install)
     end,
+    keys = {
+      {
+        '<leader>ti',
+        function() vim.cmd.checkhealth('vim.treesitter') end,
+        desc = 'Display treesitter info',
+      },
+      {
+        '<Enter>',
+        'v_an',
+        remap = true,
+        desc = 'Initialize incremental selection',
+      },
+      {
+        '<Enter>',
+        'an',
+        remap = true,
+        mode = 'x',
+        desc = 'Select parent (outer) node',
+      },
+      {
+        '<Backspace>',
+        'in',
+        remap = true,
+        mode = 'x',
+        desc = 'Select child (inner) node',
+      },
+    },
   },
   {
     'nvim-treesitter/nvim-treesitter-textobjects',

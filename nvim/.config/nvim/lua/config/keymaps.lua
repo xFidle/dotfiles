@@ -12,44 +12,6 @@ keymap('n', '<leader>M', '<CMD>Mason<CR>', {
   desc = 'Open Mason',
 })
 
--- LSP COMMANDS
-
-keymap('n', '<leader>lr', '<CMD>lsp restart<CR>', {
-  desc = 'Restart LSP',
-})
-
-keymap('n', '<leader>le', '<CMD>lsp enable<CR>', {
-  desc = 'Enable LSP',
-})
-
-keymap('n', '<leader>ld', '<CMD>lsp disable<CR>', {
-  desc = 'Disable LSP',
-})
-
-keymap('n', '<leader>li', '<CMD>checkhealth vim.lsp<CR>', {
-  desc = 'Display LSP info',
-})
-
--- TREESITTER
-keymap('n', '<leader>ti', '<CMD>checkhealth vim.treesitter<CR>', {
-  desc = 'Display treesitter info',
-})
-
-keymap('n', '<Enter>', 'v_an', {
-  remap = true,
-  desc = 'Initialize incremental selection',
-})
-
-keymap('x', '<Enter>', 'an', {
-  remap = true,
-  desc = 'Select parent (outer) node ',
-})
-
-keymap('x', '<BS>', 'in', {
-  remap = true,
-  desc = 'Select child (inner) node',
-})
-
 -- GENERAL KEYMAPS
 keymap('n', '<Esc>', '<CMD>nohlsearch<CR>', {
   desc = 'Clear search highlight',
@@ -61,6 +23,10 @@ keymap('n', 'x', '"_x', {
 
 keymap('n', '<leader>;', 'maA;<Esc>`a', {
   desc = 'Put semicolon at end of line',
+})
+
+keymap('', '<leader>,', 'maA,<Esc>`a', {
+  desc = 'Put coma at end of line',
 })
 
 keymap('n', 'J', 'maJ`a', {

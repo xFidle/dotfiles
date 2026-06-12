@@ -46,23 +46,22 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
-vim.diagnostic.config({
-  severity_sort = true,
-  underline = true,
-  update_in_insert = true,
-  float = { border = 'rounded', source = 'if_many' },
-  virtual_text = { current_line = true },
-  signs = {
-    text = {
-      [vim.diagnostic.severity.ERROR] = '󰅚 ',
-      [vim.diagnostic.severity.WARN] = '󰀪 ',
-      [vim.diagnostic.severity.INFO] = '󰋽 ',
-      [vim.diagnostic.severity.HINT] = '󰌶 ',
-    },
-  },
+local keymap = vim.keymap.set
+keymap('n', '<leader>lr', function() vim.cmd.lsp('restart') end, {
+  desc = 'Restart LSP',
 })
 
-local keymap = vim.keymap.set
+keymap('n', '<leader>le', function() vim.cmd.lsp('enable') end, {
+  desc = 'Enable LSP',
+})
+
+keymap('n', '<leader>ld', function() vim.cmd.lsp('disable') end, {
+  desc = 'Disable LSP',
+})
+
+keymap('n', '<leader>li', function() vim.cmd.checkhealth('vim.lsp') end, {
+  desc = 'Display LSP info',
+})
 
 keymap('n', ']e', function() vim.diagnostic.jump({ count = 1, severity = vim.diagnostic.severity.ERROR }) end, {
   desc = 'Jump to next error',
@@ -82,4 +81,20 @@ keymap('n', '[w', function() vim.diagnostic.jump({ count = -1, severity = vim.di
 
 keymap('n', '<leader>cd', vim.diagnostic.open_float, {
   desc = 'Open float diagnostic window',
+})
+
+vim.diagnostic.config({
+  severity_sort = true,
+  underline = true,
+  update_in_insert = true,
+  float = { border = 'rounded', source = 'if_many' },
+  virtual_text = { current_line = true },
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = '󰅚 ',
+      [vim.diagnostic.severity.WARN] = '󰀪 ',
+      [vim.diagnostic.severity.INFO] = '󰋽 ',
+      [vim.diagnostic.severity.HINT] = '󰌶 ',
+    },
+  },
 })
