@@ -30,6 +30,7 @@ return {
       transparent = true,
       italic = false,
       on_highlights = function(hl, c)
+        hl.FloatBorder = { fg = c.floatBorder }
         hl.NotifyBackground = { bg = c.bg }
         hl.Pmenu = { fg = c.fg }
         hl.PmenuSel = { fg = c.constant, bg = c.line }
