@@ -30,7 +30,11 @@ keymap('n', '<leader>li', '<Cmd>checkhealth lsp<CR>', {
   desc = 'Display LSP info',
 })
 
--- TREESITTER INCREMENTAL
+-- TREESITTER
+keymap('n', '<leader>ti', '<CMD>checkhealth vim.treesitter<CR>', {
+  desc = 'Display treesitter info',
+})
+
 keymap('n', '<Enter>', 'v_an', {
   remap = true,
   desc = 'Initialize incremental selection',
