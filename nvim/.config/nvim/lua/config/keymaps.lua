@@ -149,3 +149,11 @@ keymap('n', '<leader>d', [["_d]], {
 keymap('v', '<leader>d', [["_d]], {
   desc = 'Delete selection without yanking',
 })
+
+-- Undotree
+keymap('n', '<leader>u', function()
+  vim.cmd.packadd('nvim.undotree')
+  require('undotree').open()
+end, {
+  desc = 'Toggle undotree',
+})
