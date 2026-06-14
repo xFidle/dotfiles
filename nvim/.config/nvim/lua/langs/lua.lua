@@ -3,7 +3,16 @@ local lang = {
   filetypes = { 'lua' },
   mason_tools = { 'lua-language-server', 'stylua' },
   treesitter = { 'lua', 'luadoc', 'luap' },
-  servers = { lua_ls = {} },
+  servers = {
+    lua_ls = {
+      settings = {
+        Lua = {
+          runtime = { version = 'LuaJIT' },
+          telemetry = { enable = false },
+        },
+      },
+    },
+  },
   formatters_by_ft = { 'stylua' },
 }
 
