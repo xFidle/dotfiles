@@ -1,52 +1,35 @@
-local servers = {
-  'basedpyright',
-  'bashls',
-  'clangd',
-  'cssls',
-  'eslint',
-  'gopls',
-  'golangci_lint_ls',
-  'hls',
-  'html',
-  'lua_ls',
-  'ruff',
-  'rust_analyzer',
-  'texlab',
-  'ts_ls',
-  'vue_ls',
-}
-
-local tools = {
-  'clang-format',
-  'goimports',
-  'golines',
-  'prettier',
-  'stylua',
-}
+local reg = require('core.registry')
 
 return {
-  'mason-org/mason-lspconfig.nvim',
-  opts = { ensure_installed = servers },
-  dependencies = {
-    'neovim/nvim-lspconfig',
-    {
-      'mason-org/mason.nvim',
-      opts = {
-        ui = {
-          icons = {
-            package_installed = '✓',
-            package_pending = '➜',
-            package_uninstalled = '✗',
-          },
+  {
+    'mason-org/mason.nvim',
+    opts = {
+      ui = {
+        icons = {
+          package_installed = '✓',
+          package_pending = '➜',
+          package_uninstalled = '✗',
         },
       },
     },
-    {
-      'WhoIsSethDaniel/mason-tool-installer.nvim',
-      opts = {
-        ensure_installed = vim.tbl_extend('force', servers, tools),
-        run_on_start = true,
-      },
+  },
+  {
+    'neovim/nvim-lspconfig',
+  },
+  {
+    'mason-org/mason-lspconfig.nvim',
+    dependencies = {
+      'mason-org/mason.nvim',
+      'neovim/nvim-lspconfig',
+    },
+    opts = { automatic_enable = false },
+  },
+  {
+    'WhoIsSethDaniel/mason-tool-installer.nvim',
+    opts = {
+      ensure_installed = reg.get_mason_tools(),
+      auto_update = true,
+      run_on_start = true,
     },
   },
 }
