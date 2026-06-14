@@ -1,10 +1,17 @@
 local M = {}
 
+---@class Keymap
+---@field [1] string
+---@field [2] string
+---@field [3] string
+---@field [4] table?
+
 ---@class LangSpec
 ---@field filetypes string[]
 ---@field mason_tools? string[]
 ---@field treesitter? string[]
 ---@field servers? table<string, vim.lsp.Config>
+---@field keymaps? table<string, Keymap[]>
 ---@field formatters? table<string, conform.FormatterConfigOverride>
 ---@field formatters_by_ft? string[]
 
@@ -16,6 +23,7 @@ local M = {}
 ---@field mason_tools? string[]
 ---@field parsers? string[]
 ---@field servers? table<string, vim.lsp.Config>
+---@field keymaps? table<string, Keymap[]>
 ---@field formatters? table<string, conform.FormatterConfig>
 ---@field formatters_by_ft? table<string, string[]>
 ---@field plugins? LazySpec[]
@@ -25,6 +33,7 @@ local registry = {
   mason_tools = {},
   parsers = {},
   servers = {},
+  keymaps = {},
   formatters = {},
   formatters_by_ft = {},
   plugins = {},
@@ -49,23 +58,28 @@ function M.register(bundle)
     registry.plugins[#registry.plugins + 1] = v
   end
 
-  for name, config in pairs(bundle.lang.servers or {}) do
-    if not registry.servers[name] then
-      registry.servers[name] = config
+  for server, config in pairs(bundle.lang.servers or {}) do
+    if not registry.servers[server] then
+      registry.servers[server] = config
     end
   end
 
-  for name, config in pairs(bundle.lang.formatters or {}) do
-    if not registry.formatters[name] then
-      registry.formatters[name] = config
+  for server, keys in pairs(bundle.lang.keymaps or {}) do
+    registry.keymaps[server] = registry.keymaps[server] or {}
+    extend_dedup(registry.keymaps[server], keys)
+  end
+
+  for formatter, config in pairs(bundle.lang.formatters or {}) do
+    if not registry.formatters[formatter] then
+      registry.formatters[formatter] = config
     end
   end
 
   local fts = bundle.lang.filetypes
-  for _, name in ipairs(bundle.lang.formatters_by_ft or {}) do
-    for _, ft in ipairs(fts) do
-      registry.formatters_by_ft[ft] = registry.formatters_by_ft[ft] or {}
-      extend_dedup(registry.formatters_by_ft[ft], { name })
+  for _, formatter in ipairs(bundle.lang.formatters_by_ft or {}) do
+    for _, filetype in ipairs(fts) do
+      registry.formatters_by_ft[filetype] = registry.formatters_by_ft[filetype] or {}
+      extend_dedup(registry.formatters_by_ft[filetype], { formatter })
     end
   end
 end
@@ -93,6 +107,10 @@ end
 ---@return table<string, vim.lsp.Config>
 function M.get_servers()
   return registry.servers
+end
+
+function M.get_keymaps()
+  return registry.keymaps
 end
 
 ---@return  table<string, conform.FormatterConfig>

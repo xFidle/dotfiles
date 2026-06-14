@@ -8,12 +8,20 @@ end
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', { clear = true }),
   callback = function(e)
-    local fzf = require('fzf-lua')
     local function keymap(mode, keys, func, opts)
       local m = mode or 'n'
       local o = vim.tbl_deep_extend('error', { buffer = e.buf }, opts)
       vim.keymap.set(m, keys, func, o)
     end
+
+    local client = vim.lsp.get_client_by_id(e.data.client_id)
+    if client then
+      for _, k in ipairs(reg.get_keymaps()[client.name] or {}) do
+        keymap(k[1], k[2], k[3], k[4])
+      end
+    end
+
+    local fzf = require('fzf-lua')
 
     keymap('n', 'K', vim.lsp.buf.hover, {
       desc = 'Open documentation for symbol under cursor',
