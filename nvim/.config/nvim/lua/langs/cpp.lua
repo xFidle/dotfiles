@@ -1,8 +1,8 @@
 ---@type LangSpec
 local lang = {
   filetypes = { 'c', 'cpp' },
-  mason_tools = { 'clangd', 'clang-format', 'cmakelang', 'cmakelint' },
-  treesitter = { 'c', 'cpp', 'cmake' },
+  mason_tools = { 'clangd', 'clang-format' },
+  treesitter = { 'c', 'cpp' },
   servers = {
     clangd = {
       init_options = {
@@ -33,6 +33,7 @@ local lang = {
         offsetEncoding = { 'utf-16' },
       },
     },
+    neocmake = {},
   },
   keymaps = {
     clangd = {
@@ -42,12 +43,7 @@ local lang = {
   formatters_by_ft = { 'clang-format' },
 }
 
----@type LazySpec[]
----TODO: examine cmake-tools.nvim
-local plugins = {}
-
 ---@type LangBundle
 return {
   lang = lang,
-  plugins = plugins,
 }
