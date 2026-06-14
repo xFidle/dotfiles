@@ -1,9 +1,10 @@
-local functions = {}
+local M = {}
 
-function functions.get_colorscheme()
+---@return string
+function M.get_current()
   local path = vim.fn.expand('~/.config/theme/current-theme.conf')
   local colorscheme = vim.trim(vim.fn.readfile(path)[1])
   return colorscheme
 end
 
-return functions
+return M

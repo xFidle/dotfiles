@@ -15,11 +15,12 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+local colorscheme = require('utils.colorscheme')
 require('lazy').setup({
   spec = {
     { import = 'plugins' },
   },
-  install = { colorscheme = { require('config.util').get_colorscheme() } },
+  install = { colorscheme = { colorscheme.get_current() } },
   checker = { enabled = true },
   ui = { border = 'rounded' },
   change_detection = { enabled = true, notify = false },

@@ -1,7 +1,10 @@
+local colorscheme = require('utils.colorscheme')
+
 return {
   'nvim-lualine/lualine.nvim',
   dependencies = { 'nvim-tree/nvim-web-devicons' },
   opts = {
+    theme = colorscheme.get_current(),
     options = {
       icons_enabled = true,
       globalstatus = true,
