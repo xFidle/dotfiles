@@ -35,7 +35,9 @@ return {
             return ' recording to ' .. reg
           end,
           color = 'DiagnosticError',
-          cond = function() return vim.fn.reg_recording() ~= '' end,
+          cond = function()
+            return vim.fn.reg_recording() ~= ''
+          end,
         },
       },
       lualine_x = {
@@ -45,7 +47,9 @@ return {
         'encoding',
         'fileformat',
         {
-          function() return vim.fn.fnamemodify(vim.fn.getcwd(), ':t') end,
+          function()
+            return vim.fn.fnamemodify(vim.fn.getcwd(), ':t')
+          end,
           icon = { ' ', align = 'right' },
         },
       },
