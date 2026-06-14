@@ -3,7 +3,7 @@ local M = {}
 ---@class Keymap
 ---@field [1] string
 ---@field [2] string
----@field [3] string
+---@field [3] string|function
 ---@field [4] table?
 
 ---@class LangSpec
@@ -11,9 +11,10 @@ local M = {}
 ---@field mason_tools? string[]
 ---@field treesitter? string[]
 ---@field servers? table<string, vim.lsp.Config>
----@field keymaps? table<string, Keymap[]>
 ---@field formatters? table<string, conform.FormatterConfigOverride>
 ---@field formatters_by_ft? string[]
+---@field linters_by_ft? string[]
+---@field keymaps? table<string, Keymap[]>
 
 ---@class LangBundle
 ---@field lang LangSpec
@@ -23,9 +24,10 @@ local M = {}
 ---@field mason_tools? string[]
 ---@field parsers? string[]
 ---@field servers? table<string, vim.lsp.Config>
----@field keymaps? table<string, Keymap[]>
 ---@field formatters? table<string, conform.FormatterConfig>
 ---@field formatters_by_ft? table<string, string[]>
+---@field linters_by_ft? table<string, string[]>
+---@field keymaps? table<string, Keymap[]>
 ---@field plugins? LazySpec[]
 
 ---@type Registry
@@ -36,6 +38,7 @@ local registry = {
   keymaps = {},
   formatters = {},
   formatters_by_ft = {},
+  linters_by_ft = {},
   plugins = {},
 }
 
@@ -49,42 +52,49 @@ local function extend_dedup(dst, src)
   end
 end
 
----@param bundle LangBundle
-function M.register(bundle)
-  extend_dedup(registry.mason_tools, bundle.lang.mason_tools)
-  extend_dedup(registry.parsers, bundle.lang.treesitter)
-
-  for _, v in ipairs(bundle.plugins or {}) do
-    registry.plugins[#registry.plugins + 1] = v
-  end
-
-  for server, config in pairs(bundle.lang.servers or {}) do
-    if not registry.servers[server] then
-      registry.servers[server] = config
-    end
-  end
-
-  for server, keys in pairs(bundle.lang.keymaps or {}) do
-    registry.keymaps[server] = registry.keymaps[server] or {}
-    extend_dedup(registry.keymaps[server], keys)
-  end
-
-  for formatter, config in pairs(bundle.lang.formatters or {}) do
-    if not registry.formatters[formatter] then
-      registry.formatters[formatter] = config
-    end
-  end
-
-  local fts = bundle.lang.filetypes
-  for _, formatter in ipairs(bundle.lang.formatters_by_ft or {}) do
-    for _, filetype in ipairs(fts) do
-      registry.formatters_by_ft[filetype] = registry.formatters_by_ft[filetype] or {}
-      extend_dedup(registry.formatters_by_ft[filetype], { formatter })
+---@param dst table<string, any>
+---@param src? table<string, any>
+local function merge_keep(dst, src)
+  for k, v in pairs(src or {}) do
+    if not dst[k] then
+      dst[k] = v
     end
   end
 end
 
----@return Registry
+---@param dst table<string, any>
+---@param src? table<string, any>
+local function merge_extend(dst, src)
+  for k, v in pairs(src or {}) do
+    dst[k] = dst[k] or {}
+    extend_dedup(dst[k], v)
+  end
+end
+
+---@param dst table<string, string[]>
+---@param fts string[]
+---@param names? string[]
+local function register_by_ft(dst, fts, names)
+  for _, entry in ipairs(names or {}) do
+    for _, filetype in ipairs(fts) do
+      dst[filetype] = dst[filetype] or {}
+      extend_dedup(dst[filetype], { entry })
+    end
+  end
+end
+
+---@param bundle LangBundle
+function M.register(bundle)
+  extend_dedup(registry.mason_tools, bundle.lang.mason_tools)
+  extend_dedup(registry.parsers, bundle.lang.treesitter)
+  merge_keep(registry.servers, bundle.lang.servers)
+  merge_keep(registry.formatters, bundle.lang.formatters)
+  register_by_ft(registry.formatters_by_ft, bundle.lang.filetypes, bundle.lang.formatters_by_ft)
+  register_by_ft(registry.linters_by_ft, bundle.lang.filetypes, bundle.lang.linters_by_ft)
+  merge_extend(registry.keymaps, bundle.lang.keymaps)
+  vim.list_extend(registry.plugins, bundle.plugins or {})
+end
+
 function M.get_registry()
   return registry
 end
@@ -99,18 +109,9 @@ function M.get_parsers()
   return registry.parsers
 end
 
----@return LazySpec[]
-function M.get_plugins()
-  return registry.plugins
-end
-
 ---@return table<string, vim.lsp.Config>
 function M.get_servers()
   return registry.servers
-end
-
-function M.get_keymaps()
-  return registry.keymaps
 end
 
 ---@return  table<string, conform.FormatterConfig>
@@ -121,6 +122,21 @@ end
 ---@return table<string, string[]>
 function M.get_formatters_by_ft()
   return registry.formatters_by_ft
+end
+
+---@return table<string, string[]>
+function M.get_linters_by_ft()
+  return registry.linters_by_ft
+end
+
+---@return table<string, Keymap[]>
+function M.get_keymaps()
+  return registry.keymaps
+end
+
+---@return LazySpec[]
+function M.get_plugins()
+  return registry.plugins
 end
 
 return M
