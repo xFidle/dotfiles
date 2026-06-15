@@ -41,7 +41,11 @@ return {
         },
       },
       lualine_x = {
-        { 'lsp_status', icon = { ' ', align = 'right' } },
+        {
+          'lsp_status',
+          icon = { ' ', align = 'right' },
+          symbols = { done = '' },
+        },
       },
       lualine_y = {
         'encoding',
