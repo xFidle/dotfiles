@@ -1,11 +1,9 @@
 ---@type LangSpec
 local lang = {
   filetypes = { 'cmake' },
-  mason_tools = { 'neocmake', 'cmakelang', 'cmakelint' },
+  mason_tools = { 'neocmakelsp', 'cmakelang', 'cmakelint' },
   treesitter = { 'cmake' },
-  servers = {
-    neocmake = {},
-  },
+  servers = { neocmake = {} },
   formatters_by_ft = { 'cmake_format' },
   linters_by_ft = { 'cmakelint' },
 }
