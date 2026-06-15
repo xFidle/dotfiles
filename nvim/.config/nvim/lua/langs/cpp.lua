@@ -33,7 +33,6 @@ local lang = {
         offsetEncoding = { 'utf-16' },
       },
     },
-    neocmake = {},
   },
   keymaps = {
     clangd = {
