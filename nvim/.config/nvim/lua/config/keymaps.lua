@@ -3,15 +3,6 @@ vim.g.maplocalleader = ','
 
 local keymap = vim.keymap.set
 
--- FLOATING WINDOWS CONFIG
-keymap('n', '<leader>L', '<CMD>Lazy<CR>', {
-  desc = 'Open Lazy',
-})
-
-keymap('n', '<leader>M', '<CMD>Mason<CR>', {
-  desc = 'Open Mason',
-})
-
 -- GENERAL KEYMAPS
 keymap('n', '<Esc>', '<CMD>nohlsearch<CR>', {
   desc = 'Clear search highlight',
@@ -93,6 +84,23 @@ keymap('n', '<C-k>', '<C-w><C-k>', {
 
 keymap('n', '<C-l>', '<C-w><C-l>', {
   desc = 'Navigate to right window',
+})
+
+-- WINDOW RESIZE
+keymap('n', '<C-Up>', '<CMD>resize +2<CR>', {
+  desc = 'Increase Window Height',
+})
+
+keymap('n', '<C-Down>', '<CMD>resize -2<CR>', {
+  desc = 'Decrease Window Height',
+})
+
+keymap('n', '<C-Right>', '<CMD>vertical resize +2<CR>', {
+  desc = 'Increase Window Width',
+})
+
+keymap('n', '<C-Left>', '<CMD>vertical resize -2<CR>', {
+  desc = 'Decrease Window Width',
 })
 
 -- BUFFERS
