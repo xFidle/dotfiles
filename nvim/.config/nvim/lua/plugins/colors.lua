@@ -25,6 +25,9 @@ return {
   },
   {
     'vague-theme/vague.nvim',
+    pin = true,
+    branch = 'main',
+    commit = 'fd58046',
     lazy = true,
     opts = {
       transparent = true,
