@@ -1,5 +1,5 @@
 ---@type LangSpec
-local lang = {
+local golang = {
   filetypes = { 'go' },
   mason_tools = { 'gopls', 'golangci-lint-langserver', 'gofumpt', 'goimports', 'golines', 'impl' },
   treesitter = { 'go', 'gomod', 'gosum' },
@@ -46,5 +46,5 @@ local lang = {
 
 ---@type LangBundle
 return {
-  lang = lang,
+  langs = { golang },
 }

@@ -1,5 +1,5 @@
 ---@type LangSpec
-local lang = {
+local bash = {
   filetypes = { 'bash', 'sh', 'zsh' },
   mason_tools = { 'bash-language-server', 'shfmt', 'shellcheck' },
   treesitter = { 'bash', 'zsh' },
@@ -13,5 +13,5 @@ local lang = {
 
 ---@type LangBundle
 return {
-  lang = lang,
+  langs = { bash },
 }

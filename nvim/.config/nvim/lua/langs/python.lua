@@ -1,5 +1,5 @@
 ---@type LangSpec
-local lang = {
+local python = {
   filetypes = { 'python' },
   mason_tools = { 'pyright', 'ruff' },
   treesitter = { 'python' },
@@ -35,5 +35,5 @@ local lang = {
 
 ---@type LangBundle
 return {
-  lang = lang,
+  langs = { python },
 }

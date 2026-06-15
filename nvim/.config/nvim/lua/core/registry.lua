@@ -17,7 +17,7 @@ local M = {}
 ---@field keymaps? table<string, Keymap[]>
 
 ---@class LangBundle
----@field lang LangSpec
+---@field langs LangSpec[]
 ---@field plugins? LazySpec[]
 
 ---@class Registry
@@ -81,13 +81,15 @@ end
 
 ---@param bundle LangBundle
 function M.register(bundle)
-  extend_dedup(registry.mason_tools, bundle.lang.mason_tools)
-  extend_dedup(registry.parsers, bundle.lang.treesitter)
-  merge_keep(registry.servers, bundle.lang.servers)
-  merge_keep(registry.formatters, bundle.lang.formatters)
-  register_by_ft(registry.formatters_by_ft, bundle.lang.filetypes, bundle.lang.formatters_by_ft)
-  register_by_ft(registry.linters_by_ft, bundle.lang.filetypes, bundle.lang.linters_by_ft)
-  merge_extend(registry.keymaps, bundle.lang.keymaps)
+  for _, lang in ipairs(bundle.langs) do
+    extend_dedup(registry.mason_tools, lang.mason_tools)
+    extend_dedup(registry.parsers, lang.treesitter)
+    merge_keep(registry.servers, lang.servers)
+    merge_keep(registry.formatters, lang.formatters)
+    register_by_ft(registry.formatters_by_ft, lang.filetypes, lang.formatters_by_ft)
+    register_by_ft(registry.linters_by_ft, lang.filetypes, lang.linters_by_ft)
+    merge_extend(registry.keymaps, lang.keymaps)
+  end
   vim.list_extend(registry.plugins, bundle.plugins or {})
 end
 

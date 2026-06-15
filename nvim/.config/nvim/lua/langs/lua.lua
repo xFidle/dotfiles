@@ -1,5 +1,5 @@
 ---@type LangSpec
-local lang = {
+local lua = {
   filetypes = { 'lua' },
   mason_tools = { 'lua-language-server', 'stylua' },
   treesitter = { 'lua', 'luadoc', 'luap' },
@@ -27,6 +27,6 @@ local plugins = {
 
 ---@type LangBundle
 return {
-  lang = lang,
+  langs = { lua },
   plugins = plugins,
 }

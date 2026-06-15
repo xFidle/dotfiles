@@ -1,5 +1,5 @@
 ---@type LangSpec
-local lang = {
+local cpp = {
   filetypes = { 'c', 'cpp' },
   mason_tools = { 'clangd', 'clang-format' },
   treesitter = { 'c', 'cpp' },
@@ -42,7 +42,21 @@ local lang = {
   formatters_by_ft = { 'clang-format' },
 }
 
+---@type LangSpec
+local cmake = {
+  filetypes = { 'cmake' },
+  mason_tools = { 'neocmakelsp', 'cmakelang', 'cmakelint' },
+  treesitter = { 'cmake' },
+  servers = { neocmake = {} },
+  formatters_by_ft = { 'cmake_format' },
+  linters_by_ft = { 'cmakelint' },
+}
+
+---TODO: examine cmake-tools.nvim
+local plugins = {}
+
 ---@type LangBundle
 return {
-  lang = lang,
+  langs = { cpp, cmake },
+  plugins = plugins,
 }

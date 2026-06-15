@@ -1,5 +1,5 @@
 ---@type LangSpec
-local lang = {
+local haskell = {
   filetypes = { 'haskell' },
   mason_tools = { 'haskell-language-server', 'hlint', 'ormolu' },
   treesitter = { 'haskell' },
@@ -18,5 +18,5 @@ local lang = {
 
 ---@type LangBundle
 return {
-  lang = lang,
+  langs = { haskell },
 }
