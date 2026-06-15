@@ -30,7 +30,6 @@ return {
       end,
       desc = 'Stage hunk',
     },
-
     {
       '<leader>gr',
       function()
@@ -38,7 +37,6 @@ return {
       end,
       desc = 'Reset hunk',
     },
-
     {
       '<leader>gt',
       function()
@@ -46,7 +44,6 @@ return {
       end,
       desc = 'Toggle current line blame',
     },
-
     {
       '<leader>gp',
       function()

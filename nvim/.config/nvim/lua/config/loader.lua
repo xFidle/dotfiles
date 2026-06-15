@@ -5,8 +5,6 @@ for name in vim.fs.dir(base) do
   local mod = name:match('^(.*)%.lua$')
   if mod then
     local spec = require('langs.' .. mod)
-    if type(spec) == 'table' then
-      reg.register(spec)
-    end
+    if type(spec) == 'table' then reg.register(spec) end
   end
 end

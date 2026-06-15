@@ -6,6 +6,15 @@ return {
     events = { 'BufWritePost', 'BufReadPost', 'InsertLeave' },
     linters_by_ft = reg.get_linters_by_ft(),
   },
+  keys = {
+    {
+      '<leader>ll',
+      function()
+        require('lint').try_lint()
+      end,
+      desc = 'Trigger linting for current file',
+    },
+  },
   config = function(_, opts)
     local lint = require('lint')
     lint.linters_by_ft = opts.linters_by_ft
@@ -16,13 +25,4 @@ return {
       end,
     })
   end,
-  keys = {
-    {
-      '<leader>ll',
-      function()
-        require('lint').try_lint()
-      end,
-      desc = 'Trigger linting for current file',
-    },
-  },
 }

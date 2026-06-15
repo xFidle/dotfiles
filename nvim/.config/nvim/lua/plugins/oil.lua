@@ -18,13 +18,17 @@ return {
   keys = {
     {
       '-',
-      function() require('oil').open() end,
+      function()
+        require('oil').open()
+      end,
       desc = 'Open oil',
     },
 
     {
       '_',
-      function() require('oil').open(vim.fn.getcwd()) end,
+      function()
+        require('oil').open(vim.fn.getcwd())
+      end,
       desc = 'Open oil in cwd',
     },
   },

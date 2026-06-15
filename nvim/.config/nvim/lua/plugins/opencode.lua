@@ -9,24 +9,32 @@ return {
   keys = {
     {
       '<leader>oa',
-      function() require('opencode').ask(nil, { submit = true }) end,
+      function()
+        require('opencode').ask(nil, { submit = true })
+      end,
       desc = 'Ask opencode',
     },
     {
       '<leader>oa',
-      function() require('opencode').ask('@this: ', { submit = true }) end,
+      function()
+        require('opencode').ask('@this: ', { submit = true })
+      end,
       mode = 'v',
       desc = 'Ask opencode about selection',
     },
     {
       '<leader>os',
-      function() require('opencode').select() end,
+      function()
+        require('opencode').select()
+      end,
       mode = { 'n', 'v' },
       desc = 'Select opencode action',
     },
     {
       '<leader>ov',
-      function() return require('opencode').operator('@this ') end,
+      function()
+        return require('opencode').operator('@this ')
+      end,
       mode = 'v',
     },
   },

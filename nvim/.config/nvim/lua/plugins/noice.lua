@@ -28,12 +28,16 @@ return {
   keys = {
     {
       '<leader>nd',
-      function() require('noice').cmd('dismiss') end,
+      function()
+        require('noice').cmd('dismiss')
+      end,
       desc = 'Noice dismiss',
     },
     {
       '<leader>fn',
-      function() require('noice').cmd('fzf') end,
+      function()
+        require('noice').cmd('fzf')
+      end,
       desc = 'Find notifications',
     },
   },

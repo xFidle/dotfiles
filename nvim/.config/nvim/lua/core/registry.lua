@@ -46,9 +46,7 @@ local registry = {
 ---@param src? string[]
 local function extend_dedup(dst, src)
   for _, v in ipairs(src or {}) do
-    if not vim.tbl_contains(dst, v) then
-      dst[#dst + 1] = v
-    end
+    if not vim.tbl_contains(dst, v) then dst[#dst + 1] = v end
   end
 end
 
@@ -56,9 +54,7 @@ end
 ---@param src? table<string, any>
 local function merge_keep(dst, src)
   for k, v in pairs(src or {}) do
-    if not dst[k] then
-      dst[k] = v
-    end
+    if not dst[k] then dst[k] = v end
   end
 end
 
