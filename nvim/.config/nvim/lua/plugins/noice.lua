@@ -66,7 +66,7 @@ return {
         desc = 'Find notifications',
       },
       {
-        '<leader>cn',
+        '<leader>ni',
         function()
           vim.cmd.checkhealth('noice')
         end,
