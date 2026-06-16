@@ -113,20 +113,32 @@ return {
         desc = 'Select inner class',
       },
       {
-        'ac',
+        ']f',
         function()
-          require('nvim-treesitter-textobjects.select').select_textobject('@comment.outer', 'textobjects')
+          require('nvim-treesitter-textobjects.move').goto_next_start('@function.outer', 'textobjects')
         end,
-        mode = { 'x', 'o' },
-        desc = 'Select around comment',
+        desc = 'Goto next function',
       },
       {
-        'ic',
+        '[f',
         function()
-          require('nvim-treesitter-textobjects.select').select_textobject('@comment.inner', 'textobjects')
+          require('nvim-treesitter-textobjects.move').goto_previous_start('@function.outer', 'textobjects')
         end,
-        mode = { 'x', 'o' },
-        desc = 'Select inner comment',
+        desc = 'Goto previous function',
+      },
+      {
+        ']s',
+        function()
+          require('nvim-treesitter-textobjects.move').goto_next_start('@class.outer', 'textobjects')
+        end,
+        desc = 'Goto next class',
+      },
+      {
+        '[s',
+        function()
+          require('nvim-treesitter-textobjects.move').goto_previous_start('@class.outer', 'textobjects')
+        end,
+        desc = 'Goto previous class',
       },
     },
   },
