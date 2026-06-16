@@ -15,10 +15,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end
 
     local client = vim.lsp.get_client_by_id(e.data.client_id)
-    if client then
-      for _, k in ipairs(reg.get_keymaps()[client.name] or {}) do
-        keymap(k[1], k[2], k[3], k[4])
-      end
+    if not client then return end
+    for _, k in ipairs(reg.get_keymaps()[client.name] or {}) do
+      keymap(k[1], k[2], k[3], k[4])
     end
 
     local fzf = require('fzf-lua')
