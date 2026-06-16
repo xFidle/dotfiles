@@ -12,6 +12,13 @@ return {
         },
       },
     },
+    keys = {
+      {
+        '<leader>M',
+        '<CMD>Mason<CR>',
+        desc = 'Open Mason window',
+      },
+    },
   },
   {
     'neovim/nvim-lspconfig',
