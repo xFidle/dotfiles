@@ -1,6 +1,6 @@
 local function setup_autocommand()
   vim.api.nvim_create_autocmd('FileType', {
-    group = vim.api.nvim_create_augroup('TSGroup', { clear = true }),
+    group = vim.api.nvim_create_augroup('treesitter-init', { clear = true }),
     pattern = '*',
     callback = function()
       pcall(vim.treesitter.start)
@@ -11,6 +11,7 @@ end
 
 local function install_parsers()
   local ensure_installed = {
+    'csv',
     'regex',
     'diff',
     'dockerfile',

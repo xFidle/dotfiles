@@ -1,5 +1,26 @@
 local colorscheme = require('utils.colorscheme')
 
+local macro = {
+  function()
+    local reg = vim.fn.reg_recording()
+    return ' recording to ' .. reg
+  end,
+  color = function()
+    local hl = vim.api.nvim_get_hl(0, { name = 'DiagnosticError' })
+    return { fg = string.format('#%06x', hl.fg) }
+  end,
+  cond = function()
+    return vim.fn.reg_recording() ~= ''
+  end,
+}
+
+local cwd = {
+  function()
+    return vim.fn.fnamemodify(vim.fn.getcwd(), ':t')
+  end,
+  icon = { ' ', align = 'right' },
+}
+
 return {
   'nvim-lualine/lualine.nvim',
   dependencies = { 'nvim-tree/nvim-web-devicons' },
@@ -20,25 +41,10 @@ return {
         'diff',
       },
       lualine_c = {
-        function()
-          local filename = vim.fn.expand('%:t')
-          local extension = vim.fn.expand('%:e')
-          local icon, color = require('nvim-web-devicons').get_icon_color(filename, extension)
-          local hl_group = 'LualineFileIconColor' .. extension
-          vim.api.nvim_set_hl(0, hl_group, { fg = color })
-          return '%#' .. hl_group .. '#' .. icon .. '%* ' .. filename
-        end,
+        { 'filetype', icon_only = true, colored = true, separator = '', padding = { left = 1, right = 0 } },
+        { 'filename', separator = '', padding = { left = 0, right = 1 } },
         'diagnostics',
-        {
-          function()
-            local reg = vim.fn.reg_recording()
-            return ' recording to ' .. reg
-          end,
-          color = 'DiagnosticError',
-          cond = function()
-            return vim.fn.reg_recording() ~= ''
-          end,
-        },
+        macro,
       },
       lualine_x = {
         {
@@ -50,12 +56,7 @@ return {
       lualine_y = {
         'encoding',
         'fileformat',
-        {
-          function()
-            return vim.fn.fnamemodify(vim.fn.getcwd(), ':t')
-          end,
-          icon = { ' ', align = 'right' },
-        },
+        cwd,
       },
       lualine_z = {
         'progress',
@@ -63,4 +64,20 @@ return {
       },
     },
   },
+  config = function(_, opts)
+    require('lualine').setup(opts)
+    local group = vim.api.nvim_create_augroup('lualine-macro', { clear = true })
+    vim.api.nvim_create_autocmd('RecordingEnter', {
+      group = group,
+      callback = function()
+        require('lualine').refresh()
+      end,
+    })
+    vim.api.nvim_create_autocmd('RecordingLeave', {
+      group = group,
+      callback = function()
+        require('lualine').refresh()
+      end,
+    })
+  end,
 }

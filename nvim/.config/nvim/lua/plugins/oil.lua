@@ -1,3 +1,12 @@
+local function get_disabled_keyamps()
+  local keymaps = {}
+  local disabled = { '<C-h>', '<C-j>', '<C-k>', '<C-l>' }
+  for _, lhs in ipairs(disabled) do
+    keymaps[lhs] = false
+  end
+  return keymaps
+end
+
 return {
   'stevearc/oil.nvim',
   dependencies = { { 'nvim-mini/mini.icons', opts = {} } },
@@ -8,12 +17,7 @@ return {
     view_options = {
       show_hidden = true,
     },
-    keymaps = {
-      ['<C-h>'] = false,
-      ['<C-j>'] = false,
-      ['<C-k>'] = false,
-      ['<C-l>'] = false,
-    },
+    keymaps = get_disabled_keyamps(),
   },
   keys = {
     {

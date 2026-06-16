@@ -17,7 +17,7 @@ local feat_options = {
   completion = {
     menu = {
       auto_show = true,
-      auto_show_delay_ms = 500,
+      auto_show_delay_ms = 200,
       draw = {
         treesitter = { 'lsp' },
       },
@@ -36,7 +36,6 @@ local feat_options = {
       auto_show_delay_ms = 500,
       treesitter_highlighting = true,
     },
-    ghost_text = { enabled = true, show_without_menu = false },
   },
   sources = {
     default = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer' },
@@ -52,7 +51,7 @@ local feat_options = {
       },
     },
   },
-  signature = { enabled = true },
+  signature = { enabled = false },
   fuzzy = { implementation = 'rust' },
 }
 
