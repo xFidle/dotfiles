@@ -48,7 +48,20 @@ local vue = {
   formatters_by_ft = { 'prettier' },
 }
 
+---@type LazySpec[]
+local plugins = {
+  {
+    'norcalli/nvim-colorizer.lua',
+    opts = {
+      '*', -- Highlight all files, but customize some others.
+      css = { rgb_fn = true }, -- Enable parsing rgb(...) functions in css.
+      html = { names = false }, -- Disable parsing "names" like Blue or Gray
+    },
+  },
+}
+
 ---@type LangBundle
 return {
   langs = { html, css, ts, vue },
+  plugins = plugins,
 }
