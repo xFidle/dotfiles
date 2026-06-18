@@ -1,41 +1,15 @@
-export ZSH="$HOME/.oh-my-zsh"
-export ZSH_CONFIG="$HOME/.config/zsh"
-export EDITOR='nvim'
-export VISUAL='nvim'
-
-plugins=(git colored-man-pages zsh-syntax-highlighting zsh-autosuggestions zsh-system-clipboard)
-fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
-autoload -U compinit && compinit
-source "$ZSH/oh-my-zsh.sh"
-
-source "$ZSH_CONFIG/.zsh-vi"
-source "$ZSH_CONFIG/.zsh-devtools"
-source "$ZSH_CONFIG/.zsh-clitools"
-source "$ZSH_CONFIG/.zsh-prompt"
-
-alias cat='bat --paging=never'
-alias ls='lsd'
-alias vi='nvim'
-alias vim='nvim'
-alias opencode='opencode --port'
-
-HISTSIZE=5000
-HISTFILE="$HOME/.zsh_history"
-SAVEHIST=$HISTSIZE
-HISTDUP=erase
-setopt appendhistory
-setopt sharehistory
-setopt hist_ignore_space
-setopt hist_ignore_all_dups
-setopt hist_save_no_dups
-setopt hist_ignore_dups
-setopt hist_find_no_dups
+source "$ZDOTDIR/core/aliases.zsh"
+source "$ZDOTDIR/core/bindings.zsh"
+source "$ZDOTDIR/core/options.zsh"
+source "$ZDOTDIR/core/plugins.zsh"
+source "$ZDOTDIR/core/vi-mode.zsh"
 
 bindkey '^y' autosuggest-accept
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 
+export FZF_DEFAULT_OPTS_FILE="$XDG_CONFIG_HOME/fzf/theme"
+eval "$(fzf --zsh)"
 eval "$(zoxide init zsh)"
-
-export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
+precmd() { precmd() { echo; }; }
 eval "$(starship init zsh)"
