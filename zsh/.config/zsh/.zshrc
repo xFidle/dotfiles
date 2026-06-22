@@ -1,8 +1,11 @@
-source "$ZDOTDIR/core/aliases.zsh"
-source "$ZDOTDIR/core/bindings.zsh"
-source "$ZDOTDIR/core/options.zsh"
-source "$ZDOTDIR/core/plugins.zsh"
-source "$ZDOTDIR/core/vi-mode.zsh"
+CORE="$ZDOTDIR/core"
+ZPLUGIN="$ZDOTDIR/zplugin"
+
+source "$CORE/aliases.zsh"
+source "$CORE/bindings.zsh"
+source "$CORE/options.zsh"
+source "$CORE/vi-mode.zsh"
+source "$ZPLUGIN/zplugin.zsh"
 
 bindkey '^y' autosuggest-accept
 bindkey '^p' history-search-backward
