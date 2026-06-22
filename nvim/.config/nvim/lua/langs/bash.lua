@@ -14,7 +14,6 @@ local bash = {
     },
   },
   formatters_by_ft = { 'shfmt' },
-  linters_by_ft = { 'shellcheck' },
 }
 
 ---@type LangBundle
