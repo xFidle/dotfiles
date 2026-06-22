@@ -1,19 +1,17 @@
+#!/usr/bin/env zsh
+
 bindkey -v
 
-textobject-binds() {
-    local m c q b
-    local quotes=(\' \" \`)
-    local brackets=(\( \) \{ \} \[ \] \< \>)
-
-    autoload -U select-quoted
-    zle -N select-quoted
-    for m in visual viopp; do
-        for c in a i; do
-            for q in "${quotes[@]}"; do bindkey -M "$m" "$c$q" select-quoted; done
-            for b in "${brackets[@]}"; do bindkey -M "$m" "$c$b" select-bracketed; done
-        done
+quotes=(\' \" \`)
+brackets=(\( \) \{ \} \[ \] \< \>)
+autoload -U select-quoted
+zle -N select-quoted
+for m in visual viopp; do
+    for c in a i; do
+        for q in "${quotes[@]}"; do bindkey -M "$m" "$c$q" select-quoted; done
+        for b in "${brackets[@]}"; do bindkey -M "$m" "$c$b" select-bracketed; done
     done
-}
+done
 
 zle-keymap-select() {
     case "${KEYMAP}" in
@@ -31,6 +29,5 @@ zle-line-init() {
     echo -ne "\e[1 q"
 }
 
-textobject-binds
 zle -N zle-keymap-select
 zle -N zle-line-init
