@@ -1,4 +1,4 @@
-zsh-users/zsh-autosuggestions
-zsh-users/zsh-history-substring-search
-zsh-users/zsh-syntax-highlighting
-zsh-users/zsh-completions
+zsh-users/zsh-autosuggestions           master  85919cd1ffa7d2d5412f6d3fe437ebdbeeec4fc5
+zsh-users/zsh-completions               master  24e22843b96588773bed3c139db94701ca605c32
+zsh-users/zsh-history-substring-search  master  14c8d2e0ffaee98f2df9850b19944f32546fdea5
+zsh-users/zsh-syntax-highlighting       master  1d85c692615a25fe2293bdd44b34c217d5d2bf04
