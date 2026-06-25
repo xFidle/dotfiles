@@ -4,8 +4,9 @@ $git_branch\
 $git_status\
 $git_state\
 $git_commit\
-$pacakge\
+$package\
 $fill\
+$status\
 $cmd_duration\
 $lua\
 $golang\
@@ -31,6 +32,12 @@ success_symbol = '[➜](bold green)'
 error_symbol = '[➜](bold green)'
 vimcmd_symbol = '[➜](bold green)'
 vimcmd_visual_symbol = '[V](bold green)'
+
+[status]
+disabled = false
+format = '[$status]($style) '
+success_symbol = '0'
+success_style = 'bold green'
 
 [fill]
 symbol = ' '
