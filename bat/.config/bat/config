@@ -1,4 +1,4 @@
 --theme="current-theme"
---style="numbers,header"
+--style="default"
 --italic-text=never
 --tabs=2
