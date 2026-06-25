@@ -160,7 +160,7 @@ _zplugin_update() {
 }
 
 _zplugin_update_single() {
-    local _plugin _commit
+    local _plugin _dir _commit _old_head _new_head
 
     _plugin="$1"
     _zplugin_validate_name "$_plugin" || return 1
