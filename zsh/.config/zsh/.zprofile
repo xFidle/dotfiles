@@ -1,5 +1,5 @@
 export PAGER='less -RFK'
-export MANPAGER='bat -l man -p'
+export MANPAGER='bat -plman'
 export EDITOR='nvim'
 export VISUAL='nvim'
 
