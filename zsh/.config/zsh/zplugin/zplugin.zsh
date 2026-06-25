@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 ZPLUGIN_LOCKFILE="${ZDOTDIR}/zplugin/zplugin.lock"
-ZPLUGIN_LOGFILE="${XDG_STATE_HOME}/zplugin/log"
 ZPLUGIN_SAVE_DIR="${XDG_DATA_HOME}/zplugin"
 ZPLUGIN_DEFAULT_PLUGINS=(
     zsh-users/zsh-autosuggestions
@@ -10,6 +9,7 @@ ZPLUGIN_DEFAULT_PLUGINS=(
     zsh-users/zsh-completions
 ) # Defaults are considered only if lockfile is not present
 
+# TODO: add --dry-run
 _zplugin_usage() {
     cat <<'EOF'
 ZPLUGIN
@@ -19,7 +19,7 @@ usage: zplugin [-v|--verbose -d|--dry-run -l|--log-disabled] [--] <command> [arg
 
 commands:
     install <plugin> [-c|--commit <sha>] clone a plugin and at it to lockfile
-    update  <plugin> [-c|--commit <sha>] update one plugin, or all if plugin omitted
+    update  <plugin> [-c|--commit <sha>] update one plugin, or all if plugin name omitted
     remove  <plugin> [-y|--yes]          delete a plugin and drop it from the lockfile
     list             [-b|--bat]          list installed plugins
     help                                 show this message
@@ -33,7 +33,7 @@ EOF
 }
 
 zplugin() {
-    local ZPLUGIN_DRY_RUN ZPLUGIN_INFO_DISABLED _operation
+    local ZPLUGIN_DRY_RUN ZPLUGIN_INFO_DISABLED _operation _status
     while [[ "$1" == -* ]]; do
         case "$1" in
         --help | -h)
@@ -53,45 +53,50 @@ zplugin() {
             break
             ;;
         -*)
-            echo "Unknown global flag: $1" >&2
+            _zplugin_info "Unknown global flag: $1" >&2
             _zplugin_usage >&2
             return 1
             ;;
         esac
     done
 
-    _operation="$1"
-    shift
+    if [[ -n "$1" ]]; then
+        _operation="$1"
+        shift
+    else
+        _zplugin_info "Command not provided" >&2
+        return 1
+    fi
 
     case "$_operation" in
     install)
         _zplugin_install "$@" && _zplugin_sync
+        _status="$?"
         ;;
     update)
         _zplugin_update "$@" && _zplugin_sync
+        _status="$?"
         ;;
     remove)
         _zplugin_remove "$@" && _zplugin_sync
+        _status="$?"
         ;;
     list)
-        _zplugin_list
+        _zplugin_list "$@"
+        _status="$?"
         ;;
     *)
-        echo "Invalid command $_operation" >&2
+        _zplugin_info "$_operation is invalid command" >&2
         _zplugin_usage >&2
         return 1
         ;;
     esac
+    return "$_status"
 }
 
 _zplugin_info() {
-    local _level _message _name _timestamp
-    _level="$1"
-    _message="$2"
-    _name="${funcstack[2]}"
-    _timestamp="$(date +"%Y-%m-%d %H:%M:%S")"
-    [[ "$ZPLUGIN_INFO_DISABLED" != true ]] || echo "$_message"
-    echo "$_timestamp [$_level] [$_name] $_message" >>"$ZPLUGIN_LOGFILE"
+    local _message="$1"
+    [[ "$ZPLUGIN_INFO_DISABLED" == true ]] || echo "$_message"
 }
 
 _zplugin_install() {
@@ -99,7 +104,7 @@ _zplugin_install() {
     local _opts=(--depth=1)
 
     _plugin="$1"
-    _zplugin_validate "$_plugin" || return 1
+    _zplugin_validate_name "$_plugin" || return 1
     shift
 
     while [[ $# -ne 0 ]]; do
@@ -124,10 +129,10 @@ _zplugin_install() {
     if [[ -d "$_dir" ]]; then
         _old_head="$(git -C "$_dir" rev-parse HEAD)"
         if [[ -n "$_commit" && "$_old_head" != "$_commit" ]]; then
-            _zplugin_update_single "$_plugin" --commit "$_commit"
-            _zplugin_info "INFO" "$_plugin: switching from $_old_head to requested $_commit"
+            _zplugin_update_single "$_plugin" --commit "$_commit" || return 1
+            _zplugin_info "$_plugin: switching from $_old_head to requested $_commit"
         else
-            _zplugin_info "DEBUG" "$_plugin already installed, nothing to do"
+            _zplugin_info "$_plugin already installed, nothing to do"
         fi
         return 0
     fi
@@ -137,9 +142,10 @@ _zplugin_install() {
 
     local _out
     if _out="$(git clone "${_opts[@]}" "https://github.com/$_plugin" "$_dir" 2>&1)"; then
-        _zplugin_info "INFO" "Installed $_plugin"
+        _zplugin_info "Installed $_plugin"
+        return 0
     else
-        _zplugin_info "ERROR" "Failed to clone $_plugin: $_out"
+        _zplugin_info "Failed to clone $_plugin: $_out"
         return 1
     fi
 }
@@ -147,9 +153,9 @@ _zplugin_install() {
 _zplugin_update() {
     local _plugin="$1"
     if [[ -n "$_plugin" ]]; then
-        _zplugin_update_single "$@"
+        _zplugin_update_single "$@" || return 1
     else
-        _zplugin_update_all
+        _zplugin_update_all || return 1
     fi
 }
 
@@ -157,7 +163,7 @@ _zplugin_update_single() {
     local _plugin _commit
 
     _plugin="$1"
-    _zplugin_validate "$_plugin" || return 1
+    _zplugin_validate_name "$_plugin" || return 1
     shift
 
     while [[ $# -ne 0 ]]; do
@@ -171,7 +177,7 @@ _zplugin_update_single() {
             shift 2
             ;;
         *)
-            echo "Unknown flag: $1" >&2
+            _zplugin_info "Unknown flag: $1" >&2
             _zplugin_usage >&2
             return 1
             ;;
@@ -186,10 +192,10 @@ _zplugin_update_single() {
         _plugin="$1"
         _out="$2"
         _commit="$3"
-        if [[ -n "$_commit" ]]; then
-            _zplugin_info "ERROR" "Failed to update $_plugin to $_commit: $_out"
+        if [[ -n "$_resolved" ]]; then
+            _zplugin_info "Failed to update $_plugin to $_resolved: $_out" >&2
         else
-            _zplugin_info "ERROR" "Failed to update $_plugin: $_out"
+            _zplugin_info "Failed to update $_plugin: $_out" >&2
         fi
     }
 
@@ -208,7 +214,7 @@ _zplugin_update_single() {
             git_failure "$_plugin" "$_out"
             return 1
         fi
-        if ! _out="$(git -C "$_dir" reset --hard '@{u}' 2>&1)"; then
+        if ! _out="$(git -C "$_dir" reset --hard FETCH_HEAD 2>&1)"; then
             git_failure "$_plugin" "$_out"
             return 1
         fi
@@ -216,9 +222,9 @@ _zplugin_update_single() {
 
     _new_head="$(git -C "$_dir" rev-parse HEAD)"
     if [[ "$_old_head" != "$_new_head" ]]; then
-        _zplugin_info "INFO" "Updated $_plugin: $_old_head → $_new_head"
+        _zplugin_info "Updated $_plugin: $_old_head → $_new_head"
     else
-        _zplugin_info "DEBUG" "$_plugin already up to date"
+        _zplugin_info "$_plugin already up to date"
     fi
 }
 
@@ -233,7 +239,7 @@ _zplugin_remove() {
     local _plugin _dir _yes _reply
 
     _plugin="$1"
-    _zplugin_validate "$_plugin" || return 1
+    _zplugin_validate_name "$_plugin" || return 1
     shift
 
     while [[ $# -ne 0 ]]; do
@@ -243,7 +249,7 @@ _zplugin_remove() {
             shift 1
             ;;
         *)
-            echo "Unknown flag: $1" >&2
+            _zplugin_info "Unknown flag: $1" >&2
             _zplugin_usage >&2
             return 1
             ;;
@@ -252,7 +258,7 @@ _zplugin_remove() {
 
     _dir="$ZPLUGIN_SAVE_DIR/$_plugin"
     if [[ ! -d "$_dir" ]]; then
-        _zplugin_info "WARN" "$_plugin not installed"
+        _zplugin_info "$_plugin not installed"
         return 1
     fi
 
@@ -262,14 +268,39 @@ _zplugin_remove() {
     fi
 
     rm -rf "$(dirname "$_dir")"
-    _zplugin_info "INFO" "Removed $_plugin"
+    _zplugin_info "Removed $_plugin"
 }
 
 _zplugin_list() {
-    cat "$ZPLUGIN_LOCKFILE"
+    local _command _bat
+    _command="cat"
+
+    while [[ $# -ne 0 ]]; do
+        case "$1" in
+        --bat | -b)
+            _bat=true
+            shift 1
+            ;;
+        *)
+            _zplugin_info "Unknown flag: $1" >&2
+            _zplugin_usage >&2
+            return 1
+            ;;
+        esac
+    done
+
+    if [[ "$_bat" == true ]]; then
+        if command -v bat >/dev/null 2>&1; then
+            _command="bat"
+        else
+            _zplugin_info "'bat' is not installed, fallback to 'cat'"
+            _command="cat"
+        fi
+    fi
+    "$_command" "$ZPLUGIN_LOCKFILE"
 }
 
-_zplugin_validate() {
+_zplugin_validate_name() {
     local _plugin="$1"
     if [[ ! "$1" =~ ^([^/]+)/([^/]+)$ ]]; then
         echo "Plugin name ($_plugin) is not in format <owner>/<repo>" >&2
@@ -303,34 +334,24 @@ _zplugin_sync() {
 _zplugin_restore_lockfile() {
     local _plugin _commit
     while read -r _plugin _commit; do
-        zplugin --info-disabled install "$_plugin" --commit "$_commit"
+        zplugin --info-disabled install "$_plugin" --commit "$_commit" || return 1
     done <"$ZPLUGIN_LOCKFILE"
-    _zplugin_info "DEBUG" "Restored plugins from lockfile"
 }
 
 _zplugin_restore_default() {
     local _plugin
     for _plugin in "${ZPLUGIN_DEFAULT_PLUGINS[@]}"; do
-        zplugin --info-disabled install "$_plugin"
+        zplugin --info-disabled install "$_plugin" || return 1
     done
-    _zplugin_info "DEBUG" "Restored default plugins"
 }
 
 _zplugin_init() {
-    if [[ ! -f "$ZPLUGIN_LOGFILE" ]]; then
-        mkdir -p "${ZPLUGIN_LOGFILE:h}"
-        touch "$ZPLUGIN_LOGFILE"
-    fi
-
-    if [[ ! -d "$ZPLUGIN_SAVE_DIR" ]]; then
-        mkdir -p "$ZPLUGIN_SAVE_DIR"
-    fi
+    [[ -d "$ZPLUGIN_SAVE_DIR" ]] || mkdir -p "$ZPLUGIN_SAVE_DIR"
 
     if [[ -f "$ZPLUGIN_LOCKFILE" ]]; then
         _zplugin_restore_lockfile
     else
-        _zplugin_restore_default
-        _zplugin_sync
+        _zplugin_restore_default && _zplugin_sync
     fi
 
     _zplugin_source_lockfile
