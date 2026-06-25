@@ -1,5 +1,4 @@
 alias update='zplugin_update'
-alias cat='bat'
 alias ls='lsd'
 alias vi='nvim'
 alias vim='nvim'
