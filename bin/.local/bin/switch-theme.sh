@@ -2,6 +2,7 @@
 
 set -euo pipefail
 
+THEME=
 THEMES=(vague tokyonight)
 THEMED_TOOLS=(
     "${XDG_CONFIG_HOME}/bat"
