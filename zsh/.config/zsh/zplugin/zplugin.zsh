@@ -15,7 +15,7 @@ _zplugin_usage() {
 ZPLUGIN
 A minimal zsh plugin manager.
 
-usage: zplugin [-v|--verbose -d|--dry-run -l|--log-disabled] [--] <command> [args] 
+usage: zplugin [-v|--verbose -i|--info-disabled] [--] <command> [args] 
 
 commands:
     install <plugin> [-c|--commit <sha>] clone a plugin and at it to lockfile
