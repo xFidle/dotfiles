@@ -3,3 +3,4 @@
 --ansi
 --layout=reverse
 --border=none
+--bind 'ctrl-y:accept'
