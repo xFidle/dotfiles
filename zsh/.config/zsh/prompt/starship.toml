@@ -5,6 +5,7 @@ $git_status\
 $git_state\
 $git_commit\
 $package\
+$status\
 $fill\
 $cmd_duration\
 $lua\
@@ -13,7 +14,6 @@ $nodejs\
 $python\
 $cmake\
 $jobs\
-$status\
 $line_break
 $character"""
 
