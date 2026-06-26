@@ -1,18 +1,14 @@
-CORE="$ZDOTDIR/core"
-ZPLUGIN="$ZDOTDIR/zplugin"
+source "${ZDOTDIR}/core/aliases.zsh"
+source "${ZDOTDIR}/core/bindings.zsh"
+source "${ZDOTDIR}/core/options.zsh"
+source "${ZDOTDIR}/core/vi-mode.zsh"
 
-source "$CORE/aliases.zsh"
-source "$CORE/bindings.zsh"
-source "$CORE/options.zsh"
-source "$CORE/vi-mode.zsh"
-source "$ZPLUGIN/zplugin.zsh"
+source "${ZDOTDIR}/zplugin/zplugin.zsh"
 
-bindkey '^y' autosuggest-accept
-bindkey '^p' history-search-backward
-bindkey '^n' history-search-forward
+source "${ZDOTDIR}/tools/fzf.zsh"
 
-export FZF_DEFAULT_OPTS_FILE="$XDG_CONFIG_HOME/fzf/themes/current"
 eval "$(fzf --zsh)"
 eval "$(zoxide init zsh)"
-precmd() { precmd() { echo; }; }
 eval "$(starship init zsh)"
+
+precmd() { precmd() { echo; }; }

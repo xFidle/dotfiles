@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 setopt AUTOCD
 setopt NOBEEP
 setopt NUMERIC_GLOB_SORT
