@@ -11,7 +11,7 @@ bindkey '^y' autosuggest-accept
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 
-export FZF_DEFAULT_OPTS_FILE="$XDG_CONFIG_HOME/fzf/theme"
+export FZF_DEFAULT_OPTS_FILE="$XDG_CONFIG_HOME/fzf/themes/current"
 eval "$(fzf --zsh)"
 eval "$(zoxide init zsh)"
 precmd() { precmd() { echo; }; }
