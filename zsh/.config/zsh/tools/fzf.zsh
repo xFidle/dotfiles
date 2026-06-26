@@ -5,7 +5,7 @@ _fzf() {
   export FZF_DEFAULT_OPTS="$(cat "$fzf/config" "$fzf/themes/current")"
   export FZF_CTRL_T_OPTS="--preview 'bat --color=always --style=plain,numbers {}'"
   export FZF_ALT_C_OPTS="--preview 'lsd --tree --color=always --icon=always {}'"
-  export FZF_DEFAULT_COMMAND="fd --type f --hidden --strip-cwd-prefix"
+  export FZF_DEFAULT_COMMAND="fd --type f --hidden --strip-cwd-prefix --exclude .git"
   export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 }
 
@@ -14,5 +14,5 @@ _fzf-tab() {
 }
 
 autoload -U compinit
-compinit
+compinit -d "${XDG_CACHE_HOME}/.zcompdump"
 _fzf && _fzf-tab
