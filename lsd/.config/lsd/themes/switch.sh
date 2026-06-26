@@ -12,5 +12,3 @@ CURRENT="$3"
     cd "$LSD_PATH" || exit 1
     ln -sf "themes/$CURRENT" "colors.yaml"
 )
-
-echo "LSD: '$THEME' set"

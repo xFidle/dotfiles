@@ -10,4 +10,3 @@ CURRENT="$3"
 )
 
 bat cache --build >/dev/null 2>&1
-echo "BAT: '$THEME' set"

@@ -10,4 +10,3 @@ CURRENT="$3"
 )
 
 kill -SIGUSR1 $(pgrep kitty)
-echo "KITTY: '$THEME' set"

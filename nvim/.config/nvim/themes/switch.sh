@@ -12,6 +12,5 @@ CURRENT="$3"
 for sock in "$XDG_RUNTIME_DIR"/nvim.*; do
     if [[ -S "$sock" ]]; then
         nvim --server "$sock" --remote-send ":silent colorscheme $THEME<CR>"
-        echo "NVIM: '$THEME' set for socket '$sock'"
     fi
 done

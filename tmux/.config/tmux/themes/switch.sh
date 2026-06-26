@@ -10,4 +10,3 @@ CURRENT="$3"
 )
 
 tmux source "$TMUX_PATH/tmux.conf"
-echo "TMUX: '$THEME' set"
