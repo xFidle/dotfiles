@@ -1,5 +1,3 @@
-#!/usr/bin/env zsh
-
 _fzf() {
   local fzf="${XDG_CONFIG_HOME}/fzf"
   export FZF_DEFAULT_OPTS="$(cat "$fzf/config" "$fzf/themes/current")"
@@ -11,8 +9,9 @@ _fzf() {
 
 _fzf-tab() {
   zstyle ':fzf-tab:*' use-fzf-default-opts yes
+  zstyle ':fzf-tab:*' show-group brief
+  zstyle ':completion:*:descriptions' format '[%d]'
+  zstyle ':fzf-tab:complete:cd:*' fzf-preview 'lsd --tree --color=always --icon=always {}'
 }
 
-autoload -U compinit
-compinit -d "${XDG_CACHE_HOME}/.zcompdump"
 _fzf && _fzf-tab
