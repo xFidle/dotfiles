@@ -42,7 +42,7 @@ return {
       },
       lualine_c = {
         { 'filetype', icon_only = true, colored = true, separator = '', padding = { left = 1, right = 0 } },
-        { 'filename', separator = '', padding = { left = 0, right = 1 } },
+        { 'filename', separator = '', padding = { left = 1, right = 1 } },
         'diagnostics',
         macro,
       },
