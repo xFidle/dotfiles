@@ -45,11 +45,22 @@ local cpp = {
 ---@type LangSpec
 local cmake = {
   filetypes = { 'cmake' },
-  mason_tools = { 'neocmakelsp', 'cmakelang', 'cmakelint' },
+  mason_tools = { 'neocmakelsp', 'cmakelang' },
   treesitter = { 'cmake' },
-  servers = { neocmake = {} },
+  servers = {
+    neocmake = {
+      init_options = {
+        format = { enable = false },
+        lint = { enable = true },
+      },
+    },
+  },
+  formatters = {
+    cmake_format = {
+      prepend_args = { '--line-width', '100' },
+    },
+  },
   formatters_by_ft = { 'cmake_format' },
-  linters_by_ft = { 'cmakelint' },
 }
 
 ---TODO: examine cmake-tools.nvim
