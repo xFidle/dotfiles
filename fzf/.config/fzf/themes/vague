@@ -4,7 +4,7 @@
 --color=fg+:#aeaed1
 --color=hl:#f3be7c
 --color=hl+:#f3be7c
---color=border:#606079
+--color=border:#878787
 --color=header:#6e94b2
 --color=gutter:#141415
 --color=spinner:#7fa563
