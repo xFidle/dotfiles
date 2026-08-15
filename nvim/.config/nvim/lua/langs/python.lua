@@ -1,10 +1,10 @@
 ---@type LangSpec
 local python = {
   filetypes = { 'python' },
-  mason_tools = { 'pyright', 'ruff' },
+  mason_tools = { 'basedpyright', 'ruff' },
   treesitter = { 'python' },
   servers = {
-    pyright = {
+    basedpyright = {
       settings = {
         pyright = {
           disableOrganizeImports = true,
