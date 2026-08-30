@@ -17,7 +17,7 @@ local feat_options = {
   completion = {
     menu = {
       auto_show = true,
-      auto_show_delay_ms = 200,
+      auto_show_delay_ms = 100,
       draw = {
         treesitter = { 'lsp' },
       },
